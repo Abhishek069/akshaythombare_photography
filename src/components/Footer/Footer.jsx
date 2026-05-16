@@ -40,19 +40,19 @@ function Footer() {
             forever.
           </p>
           <div className="footer__social">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/akshaythombare_photography" target="_blank" rel="noreferrer" aria-label="Instagram">
               <i className="fab fa-instagram" />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <a href="https://www.facebook.com/share/1BVKsCSuBp/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Facebook">
               <i className="fab fa-facebook-f" />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">
+            {/* <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">
               <i className="fab fa-youtube" />
             </a>
             <a href="https://pinterest.com" target="_blank" rel="noreferrer" aria-label="Pinterest">
               <i className="fab fa-pinterest-p" />
-            </a>
-            <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+            </a> */}
+            <a href="https://wa.me/918424869624" target="_blank" rel="noreferrer" aria-label="WhatsApp">
               <i className="fab fa-whatsapp" />
             </a>
           </div>

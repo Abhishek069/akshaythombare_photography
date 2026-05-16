@@ -1,25 +1,22 @@
 .why {
-  padding: 100px 60px;
+  padding: var(--section-pad-y) var(--section-pad-x);
   background: var(--ivory);
 }
-
 .why__inner {
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
-
 .why__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 24px;
   margin-top: 20px;
 }
-
 .why__card {
   background: var(--white);
   border: 1px solid rgba(201, 151, 58, 0.15);
   border-radius: 4px;
-  padding: 40px 32px;
+  padding: clamp(24px, 3vw, 40px) clamp(20px, 2.5vw, 32px);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 .why__card:hover {
@@ -27,41 +24,36 @@
   box-shadow: 0 20px 50px rgba(26, 18, 8, 0.1);
   border-color: var(--gold);
 }
-
 .why__icon {
-  width: 54px;
-  height: 54px;
+  width: 52px; height: 52px;
   background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
 }
-.why__icon i {
-  color: var(--gold-light);
-  font-size: 1.2rem;
-}
-
+.why__icon i { color: var(--gold-light); font-size: 1.1rem; }
 .why__card-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-weight: 600;
   color: var(--charcoal);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
-
 .why__card-desc {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: clamp(0.83rem, 1.2vw, 0.9rem);
   line-height: 1.75;
 }
 
-/* ── Responsive ── */
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
 @media (max-width: 1024px) {
   .why__grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
-  .why { padding: 70px 24px; }
-  .why__grid { grid-template-columns: 1fr; gap: 20px; }
+  .why__grid { grid-template-columns: 1fr; gap: 16px; }
 }

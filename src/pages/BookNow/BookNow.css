@@ -334,3 +334,54 @@
   .form__row       { grid-template-columns: 1fr; }
   .form__checkboxes { grid-template-columns: 1fr; }
 }
+
+/* ── Page Hero ── */
+.booknow-hero {
+  position: relative;
+  height: 55vh; min-height: 340px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  background: url('/public/images/hero-bg.jpg') center / cover no-repeat;
+}
+.booknow-hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(74,10,20,0.88) 0%, rgba(10,5,2,0.72) 100%);
+}
+.booknow-hero__content {
+  position: relative; z-index: 2; text-align: center; padding: 0 20px;
+}
+.booknow-hero__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5vw, 3.6rem);
+  font-weight: 600; color: var(--white); line-height: 1.2; margin-top: 14px;
+}
+.booknow-hero__title em { font-style: italic; color: var(--gold-light); }
+
+.booknow-section {
+  padding: var(--section-pad-y) var(--section-pad-x);
+  background: var(--ivory);
+}
+.booknow-section__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .booknow-section__inner { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 768px) {
+  .booknow__form { padding: 28px 20px; }
+  .form__row     { grid-template-columns: 1fr; }
+  .form__checkboxes { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .booknow__form { padding: 24px 16px; }
+  .booknow__wa-btn { width: 100%; justify-content: center; }
+  .booknow__submit { font-size: 0.82rem; }
+}
