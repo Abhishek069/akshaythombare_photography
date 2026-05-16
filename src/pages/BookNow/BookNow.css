@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: url('D:/home/claude/akshy-photgrphy-light/public/images/hero-bg.jpg') center / cover no-repeat;
+  background: url('/public/images/hero-bg.jpg') center / cover no-repeat;
 }
 .booknow-hero__overlay {
   position: absolute;

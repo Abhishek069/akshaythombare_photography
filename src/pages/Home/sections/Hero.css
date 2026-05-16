@@ -12,7 +12,7 @@
 .hero__bg {
   position: absolute;
   inset: 0;
-  /* background: url('/images/hero-bg.jpg') center / cover no-repeat; */
+  /* background: url('/public/images/hero-bg.jpg') center / cover no-repeat; */
 }
 
 .hero__overlay {
