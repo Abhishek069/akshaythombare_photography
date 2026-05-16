@@ -1,0 +1,129 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Replace url() with your local image in App or inline style ── */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  /* background: url('/images/hero-bg.jpg') center / cover no-repeat; */
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(74, 10, 20, 0.82) 0%,
+    rgba(10, 5, 2, 0.65) 60%,
+    rgba(10, 5, 2, 0.4) 100%
+  );
+}
+
+/* ── Content ── */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+  max-width: 780px;
+}
+
+.hero__badge {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  padding: 7px 20px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.08;
+  margin-bottom: 24px;
+  animation: fadeUp 0.9s 0.15s ease both;
+}
+.hero__title em {
+  font-style: italic;
+  color: var(--gold-light);
+  display: block;
+}
+
+.hero__sub {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.05rem;
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto 42px;
+  line-height: 1.75;
+  animation: fadeUp 1s 0.28s ease both;
+}
+
+.hero__btns {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 1s 0.4s ease both;
+}
+
+/* ── Stats bar ── */
+.hero__stats {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  animation: fadeUp 1s 0.55s ease both;
+}
+
+.hero__stat { text-align: center; }
+
+.hero__stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  display: block;
+}
+
+.hero__stat-label {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.73rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 5px;
+  display: block;
+}
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero__stats { gap: 28px; bottom: 32px; }
+  .hero__stat-num { font-size: 1.7rem; }
+  .hero__btns { flex-direction: column; align-items: center; }
+}

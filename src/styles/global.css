@@ -1,0 +1,146 @@
+/* ─── CSS VARIABLES ─── */
+:root {
+  --maroon: #7b1c2a;
+  --maroon-dark: #4e0f18;
+  --gold: #c9973a;
+  --gold-light: #e8c97a;
+  --ivory: #fdf6ec;
+  --ivory-dark: #f3e8d4;
+  --charcoal: #1a1208;
+  --text-muted: #7a6a58;
+  --white: #ffffff;
+  --shadow: 0 8px 32px rgba(26, 18, 8, 0.12);
+  --transition: all 0.3s ease;
+}
+
+/* ─── RESET ─── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--ivory);
+  color: var(--charcoal);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ivory-dark); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ─── TYPOGRAPHY ─── */
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.15;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+button { font-family: 'Jost', sans-serif; cursor: pointer; border: none; }
+
+/* ─── REUSABLE BUTTONS ─── */
+.btn-primary {
+  background: var(--gold);
+  color: var(--charcoal);
+  padding: 14px 36px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  transition: var(--transition);
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(201, 151, 58, 0.35);
+}
+
+.btn-outline {
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  color: var(--white);
+  padding: 14px 36px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  transition: var(--transition);
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+/* ─── SCROLL REVEAL ANIMATION ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── PAGE WRAPPER ─── */
+.page-wrapper {
+  padding-top: 80px; /* offset for fixed navbar */
+}
+
+/* ─── SECTION COMMONS ─── */
+.section-tag {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--maroon);
+}
+.section-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin-bottom: 50px;
+}
+.center { text-align: center; }
+.center .section-line { margin: 0 auto 50px; }
+
+/* ─── RESPONSIVE UTILITIES ─── */
+@media (max-width: 768px) {
+  .page-wrapper { padding-top: 70px; }
+}
