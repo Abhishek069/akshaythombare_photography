@@ -4,7 +4,7 @@
   height: 55vh; min-height: 340px;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
-  background: url('/public/images/hero-bg.jpg') center / cover no-repeat;
+  background: url('../../assets/hero-bg.jpg') center / cover no-repeat;
 }
 .services-hero__overlay {
   position: absolute; inset: 0;
@@ -37,7 +37,6 @@
 /* ── Service Card ── */
 .service__card {
   background: var(--white);
-  border: 1px solid rgba(201,151,58,0.15);
   border-radius: 4px;
   padding: clamp(28px, 3vw, 40px) clamp(20px, 2.5vw, 32px);
   position: relative;

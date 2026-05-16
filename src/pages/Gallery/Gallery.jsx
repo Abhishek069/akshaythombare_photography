@@ -81,7 +81,7 @@ function CategoryPreview({ category, previewImages, onImageClick, onViewAll }) {
         {previewImages.map((img, index) => (
           <LazyImage
             key={img.id}
-            src={`/images/gallery/${img.file}`}
+            src={`/images/${img.file}`}
             alt={img.alt}
             onClick={() => onImageClick(img, index)}
           />
@@ -189,7 +189,7 @@ function Gallery() {
   // Lightbox for category tab (uses filtered array)
   const openLightbox = useCallback((index) => {
     const img = filtered[index];
-    setLightbox({ index, src: `/images/gallery/${img.file}`, alt: img.alt });
+    setLightbox({ index, src: `/images/${img.file}`, alt: img.alt });
   }, [filtered]);
 
   // Lightbox for All tab preview (uses full images array)
@@ -197,7 +197,7 @@ function Gallery() {
     const realIndex = filtered.findIndex(i => i.id === img.id);
     setLightbox({
       index: realIndex >= 0 ? realIndex : 0,
-      src: `/images/gallery/${img.file}`,
+      src: `/images/${img.file}`,
       alt: img.alt,
     });
   }, [filtered]);
@@ -208,7 +208,7 @@ function Gallery() {
     setLightbox(prev => {
       const newIndex = (prev.index - 1 + filtered.length) % filtered.length;
       const img = filtered[newIndex];
-      return { index: newIndex, src: `/images/gallery/${img.file}`, alt: img.alt };
+      return { index: newIndex, src: `/images/${img.file}`, alt: img.alt };
     });
   }, [filtered]);
 
@@ -216,7 +216,7 @@ function Gallery() {
     setLightbox(prev => {
       const newIndex = (prev.index + 1) % filtered.length;
       const img = filtered[newIndex];
-      return { index: newIndex, src: `/images/gallery/${img.file}`, alt: img.alt };
+      return { index: newIndex, src: `/images/${img.file}`, alt: img.alt };
     });
   }, [filtered]);
 
@@ -301,7 +301,7 @@ function Gallery() {
                 {filtered.map((img, index) => (
                   <LazyImage
                     key={img.id}
-                    src={`/images/gallery/${img.file}`}
+                    src={`/images/${img.file}`}
                     alt={img.alt}
                     onClick={() => openLightbox(index)}
                   />

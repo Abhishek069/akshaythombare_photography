@@ -10,7 +10,7 @@
 .hero__bg {
   position: absolute;
   inset: 0;
-  background: url('/public/images/hero-bg.jpg') center / cover no-repeat;
+  background: url('../../../assets/hero-bg.jpg') center / cover no-repeat;
 }
 .hero__overlay {
   position: absolute;
