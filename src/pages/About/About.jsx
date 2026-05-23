@@ -3,39 +3,66 @@ import { Link } from 'react-router-dom';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import './About.css';
 
-const team = [
-  {
-    name: 'Rahul Sharma',
-    role: 'Lead Photographer & Founder',
-    exp: '12+ Years',
-    initial: 'R',
-  },
-  {
-    name: 'Priya Kapoor',
-    role: 'Senior Cinematographer',
-    exp: '8+ Years',
-    initial: 'P',
-  },
-  {
-    name: 'Arjun Mehta',
-    role: 'Candid Photography Expert',
-    exp: '6+ Years',
-    initial: 'A',
-  },
-  {
-    name: 'Sneha Iyer',
-    role: 'Album & Post-Production Lead',
-    exp: '7+ Years',
-    initial: 'S',
-  },
+const stats = [
+  { num: '500+', label: 'Events Covered' },
+  { num: '5+',   label: 'Years Experience' },
+  { num: '20+',  label: 'Cities Covered' },
+  { num: '4.9★', label: 'Client Rating' },
+];
+
+const specialisations = [
+  'Wedding Photography & Films',
+  'Haldi & Engagement Shoots',
+  'Baby & Kids Photography',
+  'Maternity Shoots',
+  'Birthday Celebrations',
+  'Family Events & Traditional Functions',
 ];
 
 const milestones = [
-  { year: '2012', event: 'AkshayThombare Photography founded in Borivali with a single camera and a big dream.' },
-  { year: '2015', event: 'Expanded to Mumbai & Andheri. Crossed 100 Events milestone.' },
-  { year: '2018', event: 'Launched cinematic videography. Won Best Wedding Photographer — WPA India.' },
-  { year: '2021', event: 'Went pan-India. Built a team of 15 specialists across photography & film.' },
-  { year: '2024', event: 'Crossed 500 Events. Expanded to international destination weddings.' },
+  {
+    year: '2019',
+    event: 'Started with a single camera and a passion for storytelling in Borivali, Mumbai.',
+  },
+  {
+    year: '2020',
+    event: 'Expanded into maternity and baby photography. First 100 events completed.',
+  },
+  {
+    year: '2021',
+    event: 'Launched cinematic wedding films. Covered first destination wedding.',
+  },
+  {
+    year: '2023',
+    event: 'Crossed 20+ cities. Became one of Mumbai\'s most trusted photography studios.',
+  },
+  {
+    year: '2024',
+    event: '500+ events. 4.9★ rating. Clients across India and international destinations.',
+  },
+];
+
+const values = [
+  {
+    icon: 'fas fa-heart',
+    title: 'Emotion First',
+    desc: 'Every frame we shoot is driven by the feeling in the room, not a shot list.',
+  },
+  {
+    icon: 'fas fa-eye',
+    title: 'Natural Light',
+    desc: 'We work with available light to create images that feel real, warm, and timeless.',
+  },
+  {
+    icon: 'fas fa-comments',
+    title: 'Comfort & Trust',
+    desc: 'We invest time getting to know you so the camera never feels intrusive.',
+  },
+  {
+    icon: 'fas fa-film',
+    title: 'Cinematic Quality',
+    desc: 'Every delivery — photos or films — is crafted to premium visual standards.',
+  },
 ];
 
 function About() {
@@ -43,8 +70,10 @@ function About() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      }),
+      { threshold: 0.1 }
     );
     revealRefs.current.forEach(el => el && observer.observe(el));
     return () => observer.disconnect();
@@ -60,54 +89,120 @@ function About() {
       {/* ── Page Hero ── */}
       <section className="about-hero">
         <div className="about-hero__overlay" />
+        <div className="about-hero__lines">
+          <span /><span /><span />
+        </div>
         <div className="about-hero__content">
           <span className="section-tag">✦ Our Story</span>
           <h1 className="about-hero__title">
-            More Than Photographers —<br />
-            <em>We Are Storytellers</em>
+            More Than a Photographer —<br />
+            <em>A Visual Storyteller</em>
           </h1>
+          <p className="about-hero__sub">
+            Based in Mumbai · Serving India & Beyond
+          </p>
         </div>
       </section>
 
       {/* ── Story Section ── */}
       <section className="about-story">
         <div className="about-story__inner">
+
+          {/* Left text */}
           <div className="about-story__text reveal" ref={addRef}>
             <SectionHeader
-              tag="✦ Who We Are"
-              titleHtml="Passion. Art. <em>Love.</em>"
+              tag="✦ About Akshay"
+              titleHtml="Photographs Should Make You <em>Feel Again</em>"
             />
             <p>
-              AkshayThombare Photography was born in 2012 from a simple belief — that every
-              wedding deserves to be remembered exactly as it felt. Not just the
-              grand moments, but the whispered vows, the grandmother's tearful
-              smile, the stolen glances across a crowded mandap.
+              At <strong>Akshay Thombare Photography</strong>, we believe
+              photographs should make you feel the moment again — not just
+              remember it. We specialise in capturing real emotions, genuine
+              smiles, and timeless memories with a cinematic and creative touch.
             </p>
             <p>
-              Over a decade later, we've had the honour of documenting 500+
-              love stories across India and beyond. Our team of 15+ artists
-              blends technical excellence with genuine human connection — because
-              great wedding photography isn't just about gear, it's about trust.
+              From intimate family celebrations to grand weddings, every event
+              is documented with attention to detail, storytelling, and premium
+              visual quality. Our goal is simple — to create photographs and
+              films that look natural, emotional, and unforgettable even years
+              later.
             </p>
             <p>
-              Every couple we work with becomes part of our story. And we pour
-              that same devotion into every frame we capture for them.
+              Based in <strong>Mumbai</strong>, we proudly serve clients across
+              Borivali, Dahisar, and surrounding areas — and travel across
+              India for destination events.
             </p>
-            <Link to="/book-now" className="btn-primary" style={{ marginTop: '12px', display: 'inline-block' }}>
-              Start Your Story
+
+            {/* Tagline */}
+            <div className="about-story__tagline">
+              <i className="fas fa-quote-left" />
+              <p>Because moments fade. Memories shouldn't.</p>
+            </div>
+
+            <Link
+              to="/book-now"
+              className="btn-primary"
+              style={{ marginTop: '8px', display: 'inline-flex' }}
+            >
+              Book a Session
+              <i className="fas fa-arrow-right" />
             </Link>
           </div>
 
-          <div className="about-story__stats reveal" ref={addRef}>
-            {[
-              { num: '500+', label: 'Weddings Captured' },
-              { num: '12+',  label: 'Years of Experience' },
-              { num: '15+',  label: 'Team Members' },
-              { num: '20+',  label: 'Awards Won' },
-            ].map(s => (
-              <div className="about-stat" key={s.label}>
-                <span className="about-stat__num">{s.num}</span>
-                <span className="about-stat__label">{s.label}</span>
+          {/* Right — stats + specialisations */}
+          <div className="about-story__right reveal" ref={addRef}>
+
+            {/* Stats grid */}
+            <div className="about-stats">
+              {stats.map(s => (
+                <div className="about-stat" key={s.label}>
+                  <span className="about-stat__num">{s.num}</span>
+                  <span className="about-stat__label">{s.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Specialisations list */}
+            <div className="about-specs">
+              <p className="about-specs__label">We specialise in</p>
+              <ul className="about-specs__list">
+                {specialisations.map(s => (
+                  <li key={s}>
+                    <i className="fas fa-check" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── Values ── */}
+      <section className="about-values">
+        <div className="about-values__inner">
+          <div className="reveal" ref={addRef}>
+            <SectionHeader
+              tag="✦ Our Philosophy"
+              titleHtml="What Drives Every <em>Frame We Shoot</em>"
+              center
+              light
+            />
+          </div>
+          <div className="values__grid">
+            {values.map((v, i) => (
+              <div
+                className="values__card reveal"
+                key={v.title}
+                style={{ transitionDelay: `${i * 0.12}s` }}
+                ref={addRef}
+              >
+                <div className="values__icon">
+                  <i className={v.icon} />
+                </div>
+                <h3 className="values__title">{v.title}</h3>
+                <p className="values__desc">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -120,14 +215,18 @@ function About() {
           <div className="reveal" ref={addRef}>
             <SectionHeader
               tag="✦ Our Journey"
-              titleHtml="A Decade of <em>Love Stories</em>"
+              titleHtml="5 Years of <em>Stories Told</em>"
               center
             />
           </div>
           <div className="timeline">
             {milestones.map((m, i) => (
               <div
-                className={`timeline__item reveal ${i % 2 === 0 ? 'timeline__item--left' : 'timeline__item--right'}`}
+                className={`timeline__item reveal
+                  ${i % 2 === 0
+                    ? 'timeline__item--left'
+                    : 'timeline__item--right'
+                  }`}
                 key={m.year}
                 style={{ transitionDelay: `${i * 0.1}s` }}
                 ref={addRef}
@@ -143,46 +242,25 @@ function About() {
         </div>
       </section>
 
-      {/* ── Team ── */}
-      <section className="about-team">
-        <div className="about-team__inner">
-          <div className="reveal" ref={addRef}>
-            <SectionHeader
-              tag="✦ The Team"
-              titleHtml="The Artists Behind <em>Your Frames</em>"
-              center
-            />
-          </div>
-          <div className="team__grid">
-            {team.map((member, i) => (
-              <div
-                className="team__card reveal"
-                key={member.name}
-                style={{ transitionDelay: `${i * 0.1}s` }}
-                ref={addRef}
-              >
-                <div className="team__avatar">{member.initial}</div>
-                <h3 className="team__name">{member.name}</h3>
-                <span className="team__role">{member.role}</span>
-                <span className="team__exp">
-                  <i className="fas fa-camera" /> {member.exp}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA Banner ── */}
-      <section className="about-cta reveal" ref={addRef}>
-        <div className="about-cta__inner">
-          <span className="section-tag">✦ Ready to Begin?</span>
+      {/* ── CTA ── */}
+      <section className="about-cta">
+        <div className="about-cta__inner reveal" ref={addRef}>
+          <span className="section-tag">✦ Let's Create Together</span>
           <h2 className="about-cta__title">
-            Let's Create Something <em>Beautiful Together</em>
+            Ready to Preserve Your <em>Most Precious Moments?</em>
           </h2>
+          <p className="about-cta__sub">
+            Whether it's a grand wedding or an intimate family celebration,
+            we'd love to be part of your story.
+          </p>
           <div className="about-cta__btns">
-            <Link to="/book-now" className="btn-primary">Book a Consultation</Link>
-            <Link to="/gallery"  className="btn-outline">See Our Work</Link>
+            <Link to="/book-now" className="btn-primary">
+              Book a Session
+              <i className="fas fa-arrow-right" />
+            </Link>
+            <Link to="/gallery" className="btn-outline">
+              View Our Work
+            </Link>
           </div>
         </div>
       </section>

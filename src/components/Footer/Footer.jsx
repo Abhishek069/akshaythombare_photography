@@ -3,58 +3,102 @@ import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const quickLinks = [
-  { label: 'About Us',     path: '/about' },
-  { label: 'Services',     path: '/services' },
-  { label: 'Gallery',      path: '/gallery' },
-  { label: 'Packages',     path: '/packages' },
-  { label: 'Book Now',     path: '/book-now' },
+  { label: 'Home',     path: '/' },
+  { label: 'About',    path: '/about' },
+  { label: 'Services', path: '/services' },
+  { label: 'Gallery',  path: '/gallery' },
+  { label: 'Packages', path: '/packages' },
+  { label: 'Book Now', path: '/book-now' },
 ];
 
 const services = [
   'Wedding Photography',
-  'Pre-Wedding Shoots',
-  'Candid Photography',
-  'Drone Videography',
-  'Album Design',
-  'Destination Weddings',
+  'Haldi & Engagement',
+  'Baby & Kids Photography',
+  'Maternity Shoots',
+  'Birthday Celebrations',
+  'Family Events',
 ];
 
-const cities = [
-  'Mumbai', 'Jaipur', 'Delhi NCR',
-  'Bangalore', 'Pune', 'Pan India + International',
+const areas = [
+  'Borivali', 'Dahisar', 'Kandivali',
+  'Malad', 'Andheri', 'Pan Mumbai',
+  'Pan India', 'International',
 ];
 
 function Footer() {
   return (
     <footer className="footer">
+
+      {/* ── Top band ── */}
+      <div className="footer__band">
+        <p className="footer__band-text">
+          Based in <span>Mumbai</span> · Serving across India & Beyond
+        </p>
+        <Link to="/book-now" className="footer__band-btn">
+          Book a Session <i className="fas fa-arrow-right" />
+        </Link>
+      </div>
+
+      {/* ── Main grid ── */}
       <div className="footer__top">
 
         {/* Brand */}
         <div className="footer__brand">
-          <Link to="/" className="footer__logo">
-            AkshayThombare<span> Photography</span>
-          </Link>
+          <div className="footer__logo">
+            <span className="footer__logo-main">Akshay Thombare</span>
+            <span className="footer__logo-sub">Photography</span>
+          </div>
+
           <p className="footer__tagline">
-            India's most trusted wedding photography studio. We capture not
-            just moments, but the emotions behind them — for you to treasure
-            forever.
+            Photographs should make you feel the moment again — not just
+            remember it. Based in Mumbai, capturing real emotions across
+            India and beyond.
           </p>
+
           <div className="footer__social">
-            <a href="https://www.instagram.com/akshaythombare_photography" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <a
+              href="https://instagram.com"
+              target="_blank" rel="noreferrer"
+              aria-label="Instagram"
+              className="footer__social-link"
+            >
               <i className="fab fa-instagram" />
             </a>
-            <a href="https://www.facebook.com/share/1BVKsCSuBp/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <a
+              href="https://facebook.com"
+              target="_blank" rel="noreferrer"
+              aria-label="Facebook"
+              className="footer__social-link"
+            >
               <i className="fab fa-facebook-f" />
             </a>
-            {/* <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">
+            <a
+              href="https://youtube.com"
+              target="_blank" rel="noreferrer"
+              aria-label="YouTube"
+              className="footer__social-link"
+            >
               <i className="fab fa-youtube" />
             </a>
-            <a href="https://pinterest.com" target="_blank" rel="noreferrer" aria-label="Pinterest">
-              <i className="fab fa-pinterest-p" />
-            </a> */}
-            <a href="https://wa.me/918424869624" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+            <a
+              href="https://wa.me/919999999999"
+              target="_blank" rel="noreferrer"
+              aria-label="WhatsApp"
+              className="footer__social-link"
+            >
               <i className="fab fa-whatsapp" />
             </a>
+          </div>
+
+          {/* Rating badge */}
+          <div className="footer__rating">
+            <div className="footer__rating-stars">
+              {[1,2,3,4,5].map(s => (
+                <i key={s} className="fas fa-star" />
+              ))}
+            </div>
+            <span>4.9 · 500+ Happy Clients</span>
           </div>
         </div>
 
@@ -64,7 +108,10 @@ function Footer() {
           <ul className="footer__list">
             {quickLinks.map(link => (
               <li key={link.path}>
-                <Link to={link.path}>{link.label}</Link>
+                <Link to={link.path}>
+                  <i className="fas fa-chevron-right" />
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -72,34 +119,67 @@ function Footer() {
 
         {/* Services */}
         <div className="footer__col">
-          <h5 className="footer__heading">Services</h5>
+          <h5 className="footer__heading">Specialisations</h5>
           <ul className="footer__list">
             {services.map(s => (
-              <li key={s}><span>{s}</span></li>
+              <li key={s}>
+                <span>
+                  <i className="fas fa-chevron-right" />
+                  {s}
+                </span>
+              </li>
             ))}
           </ul>
         </div>
 
-        {/* Cities */}
+        {/* Areas + Contact */}
         <div className="footer__col">
-          <h5 className="footer__heading">Cities We Serve</h5>
-          <ul className="footer__list">
-            {cities.map(c => (
-              <li key={c}><span>{c}</span></li>
+          <h5 className="footer__heading">Areas We Serve</h5>
+          <ul className="footer__list footer__list--areas">
+            {areas.map(a => (
+              <li key={a}><span>{a}</span></li>
             ))}
+          </ul>
+
+          <h5 className="footer__heading" style={{ marginTop: '28px' }}>
+            Contact
+          </h5>
+          <ul className="footer__list footer__contact">
+            <li>
+              <i className="fas fa-phone" />
+              <a href="tel:+919999999999">+91 99999 99999</a>
+            </li>
+            <li>
+              <i className="fas fa-envelope" />
+              <a href="mailto:hello@akshay.photography">
+                hello@akshay.photography
+              </a>
+            </li>
+            <li>
+              <i className="fas fa-map-marker-alt" />
+              <span>Borivali West, Mumbai — 400092</span>
+            </li>
           </ul>
         </div>
 
       </div>
 
+      {/* ── Bottom bar ── */}
       <div className="footer__bottom">
-        <p>© 2025 <span>AkshayThombare Photography</span>. All rights reserved. Crafted with ❤️ for every love story.</p>
         <p>
-          <a href="#privacy">Privacy Policy</a>
-          &nbsp;|&nbsp;
-          <a href="#terms">Terms of Service</a>
+          © {new Date().getFullYear()}
+          <span> Akshay Thombare Photography</span>.
+          All rights reserved.
+        </p>
+        <p className="footer__bottom-right">
+          <a href="#privacy">Privacy</a>
+          <span className="footer__dot">·</span>
+          <a href="#terms">Terms</a>
+          <span className="footer__dot">·</span>
+          <span>Made with <i className="fas fa-heart" /> in Mumbai</span>
         </p>
       </div>
+
     </footer>
   );
 }

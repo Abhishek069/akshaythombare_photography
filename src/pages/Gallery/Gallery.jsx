@@ -1,25 +1,78 @@
 import React, {
-  useState, useEffect, useRef, useCallback, useMemo
+  useState, useEffect, useRef,
+  useCallback, useMemo
 } from 'react';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import images from './imageManifest';
 import './Gallery.css';
 
-const ALL = 'all';
-const PREVIEW_COUNT = 2; // images shown per category in "All" tab
+const ALL     = 'all';
+const PREVIEW = 2;
 
-// Pull unique categories in order they first appear
-const categories = [ALL, ...new Set(images.map(img => img.category))];
+// ── YouTube films data ──
+const films = [
+  {
+    id: 'yt1',
+    youtubeId: 'REPLACE_WITH_YOUTUBE_ID',
+    title: 'Priya & Arjun — Wedding Film',
+    category: 'Wedding',
+    location: 'Mumbai',
+    duration: '4:32',
+  },
+  {
+    id: 'yt2',
+    youtubeId: 'REPLACE_WITH_YOUTUBE_ID',
+    title: 'Sneha & Rohan — Cinematic Highlights',
+    category: 'Wedding',
+    location: 'Pune',
+    duration: '3:18',
+  },
+  {
+    id: 'yt3',
+    youtubeId: 'REPLACE_WITH_YOUTUBE_ID',
+    title: 'Baby Aarav — 1st Birthday',
+    category: 'Birthday',
+    location: 'Borivali',
+    duration: '2:45',
+  },
+  {
+    id: 'yt4',
+    youtubeId: 'REPLACE_WITH_YOUTUBE_ID',
+    title: 'Meera — Maternity Film',
+    category: 'Maternity',
+    location: 'Dahisar',
+    duration: '3:02',
+  },
+  {
+    id: 'yt5',
+    youtubeId: 'REPLACE_WITH_YOUTUBE_ID',
+    title: 'Kapoor Family — Annual Gathering',
+    category: 'Family',
+    location: 'Kandivali',
+    duration: '5:10',
+  },
+  {
+    id: 'yt6',
+    youtubeId: 'REPLACE_WITH_YOUTUBE_ID',
+    title: 'Ananya & Vikram — Engagement Film',
+    category: 'Engagement',
+    location: 'Mumbai',
+    duration: '2:55',
+  },
+];
 
-// ─────────────────────────────────────────────
-// Single lazy image with blur-up effect
-// ─────────────────────────────────────────────
-function LazyImage({ src, alt, onClick }) {
+const categories = [ALL, ...new Set(images.map(i => i.category))];
+
+// ─────────────────────────────────────
+// LazyImage — only loads when visible
+// ─────────────────────────────────────
+function LazyImage({ src, alt, onClick, priority = false }) {
   const [loaded,  setLoaded]  = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(priority);
   const ref = useRef(null);
 
   useEffect(() => {
+    if (priority) return; // load immediately
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -29,11 +82,11 @@ function LazyImage({ src, alt, onClick }) {
           observer.disconnect();
         }
       },
-      { rootMargin: '300px' }
+      { rootMargin: '400px' } // load 400px before visible
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [priority]);
 
   return (
     <div
@@ -42,30 +95,103 @@ function LazyImage({ src, alt, onClick }) {
       onClick={onClick}
       role="button"
       tabIndex={0}
-      onKeyDown={e => e.key === 'Enter' && onClick()}
-      aria-label={alt}
+      onKeyDown={e => e.key === 'Enter' && onClick?.()}
+      aria-label={`View ${alt}`}
     >
       {!loaded && <div className="gallery__skeleton" />}
       {visible && (
         <img
           src={src}
           alt={alt}
-          loading="lazy"
+          width="400"
+          height="300"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchpriority={priority ? 'high' : 'auto'}
           decoding="async"
           onLoad={() => setLoaded(true)}
           className="gallery__img"
         />
       )}
       <div className="gallery__overlay">
-        <i className="fas fa-expand-alt" />
+        <div className="gallery__overlay-inner">
+          <i className="fas fa-expand-alt" />
+          <span>{alt}</span>
+        </div>
       </div>
     </div>
   );
 }
 
-// ─────────────────────────────────────────────
-// Category preview row shown inside "All" tab
-// ─────────────────────────────────────────────
+// ─────────────────────────────────────
+// YouTube Film Card — iframe only on click
+// ─────────────────────────────────────
+function FilmCard({ film }) {
+  const [playing, setPlaying] = useState(false);
+
+  const thumb = `https://img.youtube.com/vi/${film.youtubeId}/mqdefault.jpg`;
+
+  return (
+    <div className="film__card">
+      <div
+        className={`film__thumb ${playing ? 'film__thumb--playing' : ''}`}
+        onClick={() => setPlaying(true)}
+      >
+        {/* Thumbnail shown until user clicks play */}
+        {!playing ? (
+          <>
+            <img
+              src={thumb}
+              alt={film.title}
+              loading="lazy"
+              decoding="async"
+              className="film__thumb-img"
+            />
+            <div className="film__play">
+              <div className="film__play-btn">
+                <i className="fas fa-play" />
+              </div>
+              <span className="film__duration">{film.duration}</span>
+            </div>
+            <div className="film__overlay" />
+          </>
+        ) : (
+          /* iframe only created when user clicks — saves bandwidth */
+          <iframe
+            className="film__iframe"
+            src={`https://www.youtube.com/embed/${film.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+            title={film.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        )}
+      </div>
+
+      {/* Film info */}
+      <div className="film__info">
+        <div className="film__meta">
+          <span className="film__category">{film.category}</span>
+          <span className="film__location">
+            <i className="fas fa-map-marker-alt" />
+            {film.location}
+          </span>
+        </div>
+        <h3 className="film__title">{film.title}</h3>
+        {!playing && (
+          <button
+            className="film__watch-btn"
+            onClick={() => setPlaying(true)}
+          >
+            <i className="fas fa-play" /> Watch Film
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────
+// Category Preview (All tab)
+// ─────────────────────────────────────
 function CategoryPreview({ category, previewImages, onImageClick, onViewAll }) {
   return (
     <div className="gallery__preview-group">
@@ -73,17 +199,21 @@ function CategoryPreview({ category, previewImages, onImageClick, onViewAll }) {
         <h3 className="gallery__preview-title">
           {category.charAt(0).toUpperCase() + category.slice(1)}
         </h3>
-        <button className="gallery__preview-viewall" onClick={() => onViewAll(category)}>
+        <button
+          className="gallery__preview-viewall"
+          onClick={() => onViewAll(category)}
+        >
           View All <i className="fas fa-arrow-right" />
         </button>
       </div>
       <div className="gallery__preview-grid">
-        {previewImages.map((img, index) => (
+        {previewImages.map((img, i) => (
           <LazyImage
             key={img.id}
             src={`/images/${img.file}`}
             alt={img.alt}
-            onClick={() => onImageClick(img, index)}
+            priority={i < 2}
+            onClick={() => onImageClick(img)}
           />
         ))}
       </div>
@@ -91,9 +221,9 @@ function CategoryPreview({ category, previewImages, onImageClick, onViewAll }) {
   );
 }
 
-// ─────────────────────────────────────────────
+// ─────────────────────────────────────
 // Lightbox
-// ─────────────────────────────────────────────
+// ─────────────────────────────────────
 function Lightbox({ image, onClose, onPrev, onNext }) {
   useEffect(() => {
     const handler = e => {
@@ -102,20 +232,18 @@ function Lightbox({ image, onClose, onPrev, onNext }) {
       if (e.key === 'ArrowLeft')  onPrev();
     };
     window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, [onClose, onNext, onPrev]);
-
-  useEffect(() => {
     document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
-  }, []);
+    return () => {
+      window.removeEventListener('keydown', handler);
+      document.body.style.overflow = '';
+    };
+  }, [onClose, onNext, onPrev]);
 
   return (
     <div className="lightbox" onClick={onClose}>
       <button className="lightbox__close" onClick={onClose} aria-label="Close">
         <i className="fas fa-times" />
       </button>
-
       <button
         className="lightbox__nav lightbox__nav--prev"
         onClick={e => { e.stopPropagation(); onPrev(); }}
@@ -123,7 +251,6 @@ function Lightbox({ image, onClose, onPrev, onNext }) {
       >
         <i className="fas fa-chevron-left" />
       </button>
-
       <div className="lightbox__content" onClick={e => e.stopPropagation()}>
         <img
           src={image.src}
@@ -132,7 +259,6 @@ function Lightbox({ image, onClose, onPrev, onNext }) {
         />
         <p className="lightbox__caption">{image.alt}</p>
       </div>
-
       <button
         className="lightbox__nav lightbox__nav--next"
         onClick={e => { e.stopPropagation(); onNext(); }}
@@ -144,12 +270,15 @@ function Lightbox({ image, onClose, onPrev, onNext }) {
   );
 }
 
-// ─────────────────────────────────────────────
-// Main Gallery Page
-// ─────────────────────────────────────────────
+// ─────────────────────────────────────
+// Main Gallery
+// ─────────────────────────────────────
+const TABS = ['photos', 'films'];
+
 function Gallery() {
+  const [mainTab,       setMainTab]       = useState('photos');
   const [activeCategory, setActiveCategory] = useState(ALL);
-  const [lightbox, setLightbox]             = useState(null);
+  const [lightbox,      setLightbox]      = useState(null);
   const headerRef = useRef(null);
 
   useEffect(() => {
@@ -157,19 +286,17 @@ function Gallery() {
       entries => entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('visible');
       }),
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     if (headerRef.current) observer.observe(headerRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // Scroll to top of gallery section on tab change
+  // Reset category when switching main tab
   useEffect(() => {
-    const el = document.querySelector('.gallery-section');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, [activeCategory]);
+    setActiveCategory(ALL);
+  }, [mainTab]);
 
-  // Filtered images for non-All tabs
   const filtered = useMemo(() =>
     activeCategory === ALL
       ? images
@@ -177,26 +304,29 @@ function Gallery() {
     [activeCategory]
   );
 
-  // For All tab: group by category, take first PREVIEW_COUNT each
   const categoryGroups = useMemo(() => {
-    const uniqueCats = [...new Set(images.map(img => img.category))];
-    return uniqueCats.map(cat => ({
+    const cats = [...new Set(images.map(img => img.category))];
+    return cats.map(cat => ({
       category: cat,
-      preview: images.filter(img => img.category === cat).slice(0, PREVIEW_COUNT),
+      preview: images
+        .filter(img => img.category === cat)
+        .slice(0, PREVIEW),
     }));
   }, []);
 
-  // Lightbox for category tab (uses filtered array)
   const openLightbox = useCallback((index) => {
     const img = filtered[index];
-    setLightbox({ index, src: `/images/${img.file}`, alt: img.alt });
+    setLightbox({
+      index,
+      src: `/images/${img.file}`,
+      alt: img.alt,
+    });
   }, [filtered]);
 
-  // Lightbox for All tab preview (uses full images array)
-  const openLightboxByImage = useCallback((img, _index) => {
-    const realIndex = filtered.findIndex(i => i.id === img.id);
+  const openLightboxByImage = useCallback((img) => {
+    const index = filtered.findIndex(i => i.id === img.id);
     setLightbox({
-      index: realIndex >= 0 ? realIndex : 0,
+      index: index >= 0 ? index : 0,
       src: `/images/${img.file}`,
       alt: img.alt,
     });
@@ -206,23 +336,19 @@ function Gallery() {
 
   const prevImage = useCallback(() => {
     setLightbox(prev => {
-      const newIndex = (prev.index - 1 + filtered.length) % filtered.length;
-      const img = filtered[newIndex];
-      return { index: newIndex, src: `/images/${img.file}`, alt: img.alt };
+      const i = (prev.index - 1 + filtered.length) % filtered.length;
+      const img = filtered[i];
+      return { index: i, src: `/images/${img.file}`, alt: img.alt };
     });
   }, [filtered]);
 
   const nextImage = useCallback(() => {
     setLightbox(prev => {
-      const newIndex = (prev.index + 1) % filtered.length;
-      const img = filtered[newIndex];
-      return { index: newIndex, src: `/images/${img.file}`, alt: img.alt };
+      const i = (prev.index + 1) % filtered.length;
+      const img = filtered[i];
+      return { index: i, src: `/images/${img.file}`, alt: img.alt };
     });
   }, [filtered]);
-
-  const handleViewAll = useCallback((category) => {
-    setActiveCategory(category);
-  }, []);
 
   return (
     <main className="page-wrapper">
@@ -230,11 +356,17 @@ function Gallery() {
       {/* ── Page Hero ── */}
       <section className="gallery-hero">
         <div className="gallery-hero__overlay" />
+        <div className="gallery-hero__lines">
+          <span /><span /><span />
+        </div>
         <div className="gallery-hero__content">
           <span className="section-tag">✦ Our Portfolio</span>
           <h1 className="gallery-hero__title">
-            Moments Frozen <em>In Time</em>
+            Moments That Last <em>A Lifetime</em>
           </h1>
+          <p className="gallery-hero__sub">
+            Photos & Cinematic Films
+          </p>
         </div>
       </section>
 
@@ -244,70 +376,132 @@ function Gallery() {
 
           <div className="reveal" ref={headerRef}>
             <SectionHeader
-              tag="✦ Gallery"
+              tag="✦ Portfolio"
               titleHtml="Stories Told Through <em>Every Frame</em>"
               center
             />
           </div>
 
-          {/* ── Filter Tabs ── */}
-          <div className="gallery__tabs" role="tablist">
-            {categories.map(cat => (
+          {/* ── Main tabs: Photos | Films ── */}
+          <div className="gallery__main-tabs">
+            {TABS.map(tab => (
               <button
-                key={cat}
-                role="tab"
-                aria-selected={activeCategory === cat}
-                className={`gallery__tab ${activeCategory === cat ? 'gallery__tab--active' : ''}`}
-                onClick={() => setActiveCategory(cat)}
+                key={tab}
+                className={`gallery__main-tab
+                  ${mainTab === tab ? 'gallery__main-tab--active' : ''}
+                `}
+                onClick={() => setMainTab(tab)}
               >
-                {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                {cat !== ALL && (
-                  <span className="gallery__tab-count">
-                    {images.filter(i => i.category === cat).length}
-                  </span>
-                )}
+                <i className={
+                  tab === 'photos'
+                    ? 'fas fa-images'
+                    : 'fas fa-film'
+                } />
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
             ))}
           </div>
 
-          {/* ── ALL TAB: category previews ── */}
-          {activeCategory === ALL && (
-            <div className="gallery__all-view">
-              <p className="gallery__all-note">
-                <i className="fas fa-images" />
-                Showing <strong>{PREVIEW_COUNT} photos</strong> per category.
-                Click any category to see all.
-              </p>
-              {categoryGroups.map(group => (
-                <CategoryPreview
-                  key={group.category}
-                  category={group.category}
-                  previewImages={group.preview}
-                  onImageClick={openLightboxByImage}
-                  onViewAll={handleViewAll}
-                />
-              ))}
-            </div>
-          )}
-
-          {/* ── CATEGORY TAB: full masonry grid ── */}
-          {activeCategory !== ALL && (
+          {/* ══════════════
+              PHOTOS TAB
+          ══════════════ */}
+          {mainTab === 'photos' && (
             <>
-              <p className="gallery__count">
-                Showing <strong>{filtered.length}</strong> photos in
-                <strong> "{activeCategory}"</strong>
-              </p>
-              <div className="gallery__grid">
-                {filtered.map((img, index) => (
-                  <LazyImage
-                    key={img.id}
-                    src={`/images/${img.file}`}
-                    alt={img.alt}
-                    onClick={() => openLightbox(index)}
-                  />
+              {/* Category filter tabs */}
+              <div className="gallery__tabs" role="tablist">
+                {categories.map(cat => (
+                  <button
+                    key={cat}
+                    role="tab"
+                    aria-selected={activeCategory === cat}
+                    className={`gallery__tab
+                      ${activeCategory === cat ? 'gallery__tab--active' : ''}
+                    `}
+                    onClick={() => setActiveCategory(cat)}
+                  >
+                    {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                    {cat !== ALL && (
+                      <span className="gallery__tab-count">
+                        {images.filter(i => i.category === cat).length}
+                      </span>
+                    )}
+                  </button>
                 ))}
               </div>
+
+              {/* ALL tab — category previews */}
+              {activeCategory === ALL && (
+                <div className="gallery__all-view">
+                  <p className="gallery__all-note">
+                    <i className="fas fa-images" />
+                    Showing <strong>{PREVIEW} photos</strong> per
+                    category — click any tab to see all.
+                  </p>
+                  {categoryGroups.map(group => (
+                    <CategoryPreview
+                      key={group.category}
+                      category={group.category}
+                      previewImages={group.preview}
+                      onImageClick={openLightboxByImage}
+                      onViewAll={setActiveCategory}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Category tab — full masonry */}
+              {activeCategory !== ALL && (
+                <>
+                  <p className="gallery__count">
+                    Showing <strong>{filtered.length}</strong> photos
+                    in <strong>"{activeCategory}"</strong>
+                  </p>
+                  <div className="gallery__grid">
+                    {filtered.map((img, index) => (
+                      <LazyImage
+                        key={img.id}
+                        src={`/images/${img.file}`}
+                        alt={img.alt}
+                        priority={index < 4}
+                        onClick={() => openLightbox(index)}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
             </>
+          )}
+
+          {/* ══════════════
+              FILMS TAB
+          ══════════════ */}
+          {mainTab === 'films' && (
+            <div className="films__section">
+              <p className="films__note">
+                <i className="fas fa-play-circle" />
+                Click any film to watch. Each film loads only when
+                you play it — keeping this page fast.
+              </p>
+              <div className="films__grid">
+                {films.map(film => (
+                  <FilmCard key={film.id} film={film} />
+                ))}
+              </div>
+
+              {/* YouTube channel CTA */}
+              <div className="films__channel-cta">
+                <p>Want to see more of our cinematic work?</p>
+                <a
+                  href="https://youtube.com/@yourchannel"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="films__channel-btn"
+                >
+                  <i className="fab fa-youtube" />
+                  Visit Our YouTube Channel
+                </a>
+              </div>
+            </div>
           )}
 
         </div>

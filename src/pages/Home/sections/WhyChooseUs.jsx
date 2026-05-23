@@ -2,78 +2,124 @@ import React, { useEffect, useRef } from 'react';
 import SectionHeader from '../../../components/SectionHeader/SectionHeader';
 import './WhyChooseUs.css';
 
-const reasons = [
+const specialisations = [
   {
-    icon: 'fas fa-camera',
-    title: 'Candid Specialists',
-    desc: 'We master the art of capturing unposed, real emotions — the tears, the laughter, the stolen glances.',
+    icon: 'fas fa-ring',
+    title: 'Wedding Photography & Films',
+    desc: 'Full-day cinematic coverage of your wedding — every ritual, emotion, and celebration documented with precision and heart.',
+    delay: 0,
   },
   {
-    icon: 'fas fa-film',
-    title: 'Cinematic Films',
-    desc: 'Award-winning videography that turns your wedding day into a movie you will rewatch forever.',
+    icon: 'fas fa-fire',
+    title: 'Haldi & Engagement Shoots',
+    desc: 'Vibrant, colourful, and full of life — we capture every splash, laugh, and tender moment of your pre-wedding functions.',
+    delay: 0.1,
   },
   {
-    icon: 'fas fa-map-marked-alt',
-    title: 'Pan India Coverage',
-    desc: 'From grand Delhi banquets to intimate Goa beach weddings — we travel wherever your love story unfolds.',
+    icon: 'fas fa-baby',
+    title: 'Baby & Kids Photography',
+    desc: 'Tiny fingers, big smiles, and pure joy. We create a safe and fun environment to capture your little one\'s best moments.',
+    delay: 0.2,
   },
   {
-    icon: 'fas fa-palette',
-    title: 'Premium Editing',
-    desc: 'Every photo is hand-edited by our senior artists, delivering a timeless, magazine-worthy finish.',
+    icon: 'fas fa-heart',
+    title: 'Maternity Shoots',
+    desc: 'Celebrating the most beautiful journey of your life. Elegant, emotional, and timeless portraits for this magical phase.',
+    delay: 0.3,
   },
   {
-    icon: 'fas fa-headset',
-    title: 'Dedicated Support',
-    desc: 'A personal coordinator assigned to your wedding from booking to album delivery.',
+    icon: 'fas fa-birthday-cake',
+    title: 'Birthday Celebrations',
+    desc: 'From 1st birthdays to milestone celebrations — every laugh, cake smash, and heartfelt moment beautifully preserved.',
+    delay: 0.4,
   },
   {
-    icon: 'fas fa-clock',
-    title: 'On-Time Delivery',
-    desc: 'Preview photos within 48 hours. Full gallery in 30 days. We respect your excitement.',
+    icon: 'fas fa-users',
+    title: 'Family Events & Functions',
+    desc: 'Traditional functions, family gatherings, and cultural events covered with warmth, detail, and genuine storytelling.',
+    delay: 0.5,
   },
 ];
 
+const whyUs = [
+  { icon: 'fas fa-eye',         text: 'Real emotions, not posed pictures' },
+  { icon: 'fas fa-film',        text: 'Cinematic storytelling approach' },
+  { icon: 'fas fa-clock',       text: '48hr preview delivery' },
+  { icon: 'fas fa-map-marker-alt', text: 'Pan India coverage' },
+];
+
 function WhyChooseUs() {
-  const cardsRef = useRef([]);
+  const revealRefs = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.15 }
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      }),
+      { threshold: 0.1 }
     );
-    cardsRef.current.forEach(el => el && observer.observe(el));
+    revealRefs.current.forEach(el => el && observer.observe(el));
     return () => observer.disconnect();
   }, []);
+
+  const addRef = el => {
+    if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el);
+  };
 
   return (
     <section className="why">
       <div className="why__inner">
-        <div className="reveal" ref={el => (cardsRef.current[0] = el)}>
+
+        {/* ── Header ── */}
+        <div className="reveal" ref={addRef}>
           <SectionHeader
-            tag="✦ Why Choose Us"
-            titleHtml="What Makes Us <em>Different</em>"
+            tag="✦ What We Do"
+            titleHtml="Specialising in Every <em>Chapter of Life</em>"
             center
           />
         </div>
 
+        {/* ── Specialisations grid ── */}
         <div className="why__grid">
-          {reasons.map((r, i) => (
+          {specialisations.map((s, i) => (
             <div
               className="why__card reveal"
-              key={r.title}
-              style={{ transitionDelay: `${i * 0.1}s` }}
-              ref={el => (cardsRef.current[i + 1] = el)}
+              key={s.title}
+              style={{ transitionDelay: `${s.delay}s` }}
+              ref={addRef}
             >
+              {/* Number */}
+              <span className="why__card-num">
+                0{i + 1}
+              </span>
+
+              {/* Icon */}
               <div className="why__icon">
-                <i className={r.icon} />
+                <i className={s.icon} />
               </div>
-              <h3 className="why__card-title">{r.title}</h3>
-              <p className="why__card-desc">{r.desc}</p>
+
+              <h3 className="why__card-title">{s.title}</h3>
+              <p className="why__card-desc">{s.desc}</p>
+
+              {/* Hover line */}
+              <div className="why__card-line" />
             </div>
           ))}
         </div>
+
+        {/* ── Why us strip ── */}
+        <div className="why__strip reveal" ref={addRef}>
+          <p className="why__strip-label">Why choose us —</p>
+          <div className="why__strip-items">
+            {whyUs.map(w => (
+              <div className="why__strip-item" key={w.text}>
+                <i className={w.icon} />
+                <span>{w.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

@@ -2,7 +2,7 @@
 .booknow-hero {
   position: relative;
   height: 55vh;
-  min-height: 360px;
+  min-height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,113 +10,126 @@
   background: url('../../assets/hero-bg.jpg') center / cover no-repeat;
 }
 .booknow-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(74,10,20,0.88) 0%, rgba(10,5,2,0.72) 100%);
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    135deg, rgba(74,10,20,0.9) 0%, rgba(14,10,6,0.75) 100%
+  );
+}
+.booknow-hero__lines {
+  position: absolute; inset: 0; z-index: 1;
+  display: flex; justify-content: space-between;
+  padding: 0 10%; pointer-events: none;
+}
+.booknow-hero__lines span {
+  display: block; width: 1px; height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(201,151,58,0.15) 30%,
+    rgba(201,151,58,0.15) 70%,
+    transparent
+  );
 }
 .booknow-hero__content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 0 20px;
+  position: relative; z-index: 2;
+  text-align: center; padding: 0 24px;
 }
 .booknow-hero__title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 5vw, 3.6rem);
-  font-weight: 600;
-  color: var(--white);
-  line-height: 1.2;
-  margin-top: 14px;
+  font-size: clamp(1.9rem, 5.5vw, 4rem);
+  font-weight: 600; color: var(--white);
+  line-height: 1.15; margin: 14px 0 10px;
 }
 .booknow-hero__title em {
-  font-style: italic;
-  color: var(--gold-light);
+  font-style: italic; color: var(--gold-light); display: block;
+}
+.booknow-hero__sub {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.72rem; letter-spacing: 0.32em;
+  text-transform: uppercase;
 }
 
 /* ── Main Section ── */
 .booknow-section {
-  padding: 100px 60px;
+  padding: var(--section-pad-y) var(--section-pad-x);
   background: var(--ivory);
 }
 .booknow-section__inner {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 80px;
+  grid-template-columns: 1fr 1.5fr;
+  gap: clamp(48px, 7vw, 96px);
   align-items: start;
 }
 
-/* ── Left Info Panel ── */
+/* ── Info Panel ── */
 .booknow__info-intro {
   color: var(--text-muted);
-  font-size: 0.93rem;
-  line-height: 1.8;
+  font-size: clamp(0.86rem, 1.3vw, 0.93rem);
+  line-height: 1.85;
   margin-bottom: 32px;
 }
 
 .booknow__contact-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 32px;
+  gap: 18px;
+  margin-bottom: 28px;
 }
 .booknow__contact-item {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 14px;
 }
 .booknow__contact-icon {
-  width: 44px;
-  height: 44px;
+  width: 42px; height: 42px;
   background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 .booknow__contact-icon i {
-  color: var(--gold-light);
-  font-size: 0.9rem;
+  color: var(--gold-light); font-size: 0.85rem;
 }
 .booknow__contact-text {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+  display: flex; flex-direction: column; gap: 3px;
 }
 .booknow__contact-text strong {
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
   font-weight: 600;
 }
+.booknow__contact-text a,
 .booknow__contact-text span {
-  font-size: 0.9rem;
-  color: var(--charcoal);
+  font-size: clamp(0.84rem, 1.2vw, 0.9rem);
+  color: var(--charcoal-2);
   line-height: 1.5;
+  text-decoration: none;
+  transition: color 0.3s;
 }
+.booknow__contact-text a:hover { color: var(--gold); }
 
-/* WhatsApp Button */
+/* WhatsApp btn */
 .booknow__wa-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   background: #25d366;
   color: var(--white);
-  padding: 14px 26px;
-  border-radius: 2px;
+  padding: 13px 24px;
   font-family: 'Jost', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-decoration: none;
   transition: all 0.3s;
-  margin-bottom: 32px;
-  display: inline-flex;
+  margin-bottom: 28px;
+  min-height: 48px;
 }
-.booknow__wa-btn i { font-size: 1.1rem; }
+.booknow__wa-btn i { font-size: 1.05rem; }
 .booknow__wa-btn:hover {
   background: #1fba58;
   transform: translateY(-2px);
@@ -125,175 +138,137 @@
 
 /* Trust badges */
 .booknow__badges {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 .booknow__badge {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.85rem;
+  gap: 9px;
+  font-size: clamp(0.78rem, 1.1vw, 0.83rem);
   color: var(--text-muted);
+  background: var(--white);
+  border: 1px solid rgba(201,151,58,0.14);
+  padding: 10px 14px;
 }
 .booknow__badge i {
   color: var(--gold);
-  font-size: 0.9rem;
-  width: 18px;
+  font-size: 0.85rem;
 }
 
-/* ── Right Form Panel ── */
+/* ── Form Panel ── */
 .booknow__form {
   background: var(--white);
-  border: 1px solid rgba(201,151,58,0.18);
-  border-radius: 4px;
-  padding: 48px 44px;
+  border: 1px solid rgba(201,151,58,0.16);
+  padding: clamp(28px, 4vw, 52px) clamp(24px, 3.5vw, 48px);
 }
 
-/* Success banner */
+/* Success */
 .booknow__success {
   display: flex;
   align-items: center;
-  gap: 14px;
-  background: rgba(37,211,102,0.1);
+  gap: 16px;
+  background: rgba(37,211,102,0.08);
   border: 1px solid rgba(37,211,102,0.3);
-  border-radius: 3px;
-  padding: 16px 20px;
+  padding: 18px 20px;
   margin-bottom: 24px;
+  animation: fadeInUp 0.5s ease;
 }
-.booknow__success i {
-  color: #25d366;
-  font-size: 1.4rem;
+.booknow__success-icon {
+  width: 40px; height: 40px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
+.booknow__success-icon i { color: var(--white); font-size: 1rem; }
 .booknow__success strong {
   display: block;
   font-size: 0.9rem;
-  color: var(--charcoal);
+  color: var(--charcoal-2);
   margin-bottom: 2px;
 }
 .booknow__success span {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
-/* Form rows */
+/* Form layout */
 .form__row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 16px;
 }
-
 .form__group {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
-
 .form__label {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--charcoal);
+  color: var(--charcoal-2);
 }
 .form__required { color: var(--maroon); }
 
 .form__input {
   width: 100%;
   padding: 12px 16px;
-  border: 1.5px solid rgba(201,151,58,0.25);
-  border-radius: 2px;
+  border: 1px solid rgba(201,151,58,0.22);
   background: var(--ivory);
   font-family: 'Jost', sans-serif;
-  font-size: 0.9rem;
-  color: var(--charcoal);
-  transition: border-color 0.3s, box-shadow 0.3s;
+  font-size: clamp(0.86rem, 1.2vw, 0.9rem);
+  color: var(--charcoal-2);
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
   outline: none;
+  border-radius: 0;
+  min-height: 46px;
 }
-.form__input::placeholder { color: rgba(26,18,8,0.35); }
+.form__input::placeholder { color: rgba(26,18,8,0.3); }
 .form__input:focus {
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(201,151,58,0.12);
+  box-shadow: 0 0 0 3px rgba(201,151,58,0.1);
   background: var(--white);
 }
-.form__input--error {
-  border-color: #d9534f;
-}
+.form__input--error { border-color: #d9534f; }
 .form__input--error:focus {
-  box-shadow: 0 0 0 3px rgba(217,83,79,0.12);
+  box-shadow: 0 0 0 3px rgba(217,83,79,0.1);
 }
 
 .form__select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9973A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9973A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   cursor: pointer;
 }
 
-.form__textarea { resize: vertical; min-height: 110px; }
-
+.form__textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
 .form__error {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: #d9534f;
   margin-top: 2px;
 }
 
-/* ── Checkboxes ── */
-.form__checkboxes {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-.form__checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.87rem;
-  color: var(--charcoal);
-  cursor: pointer;
-  user-select: none;
-}
-.form__checkbox { display: none; }
-.form__checkbox-custom {
-  width: 18px;
-  height: 18px;
-  border: 1.5px solid rgba(201,151,58,0.4);
-  border-radius: 2px;
-  background: var(--ivory);
-  flex-shrink: 0;
-  position: relative;
-  transition: background 0.2s, border-color 0.2s;
-}
-.form__checkbox:checked + .form__checkbox-custom {
-  background: var(--maroon);
-  border-color: var(--maroon);
-}
-.form__checkbox:checked + .form__checkbox-custom::after {
-  content: '';
-  position: absolute;
-  left: 4px; top: 1px;
-  width: 5px; height: 9px;
-  border: 2px solid var(--white);
-  border-top: none;
-  border-left: none;
-  transform: rotate(45deg);
-}
-
-/* ── Submit Button ── */
+/* Submit button */
 .booknow__submit {
   width: 100%;
   padding: 16px;
   background: var(--gold);
   color: var(--charcoal);
   border: none;
-  border-radius: 2px;
   font-family: 'Jost', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.87rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
   display: flex;
@@ -302,86 +277,61 @@
   gap: 10px;
   transition: all 0.3s;
   margin-bottom: 14px;
+  min-height: 54px;
+  position: relative;
+  overflow: hidden;
 }
-.booknow__submit:hover {
-  background: var(--gold-light);
+.booknow__submit::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--white);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.booknow__submit:hover:not(:disabled)::after { opacity: 0.1; }
+.booknow__submit:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(201,151,58,0.35);
+  box-shadow: 0 12px 32px rgba(201,151,58,0.4);
+}
+.booknow__submit--sending {
+  opacity: 0.8;
+  cursor: not-allowed;
 }
 .booknow__submit i { font-size: 1rem; }
 
 .booknow__form-note {
   text-align: center;
-  font-size: 0.78rem;
-  color: rgba(26,18,8,0.4);
+  font-size: 0.76rem;
+  color: rgba(26,18,8,0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
 }
-.booknow__form-note i { color: var(--gold); font-size: 0.72rem; }
-
-/* ── Responsive ── */
-@media (max-width: 1024px) {
-  .booknow-section__inner {
-    grid-template-columns: 1fr;
-    gap: 56px;
-  }
-}
-@media (max-width: 768px) {
-  .booknow-section { padding: 70px 24px; }
-  .booknow__form   { padding: 32px 24px; }
-  .form__row       { grid-template-columns: 1fr; }
-  .form__checkboxes { grid-template-columns: 1fr; }
-}
-
-/* ── Page Hero ── */
-.booknow-hero {
-  position: relative;
-  height: 55vh; min-height: 340px;
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-  background: url('../../assets/hero-bg.jpg') center / cover no-repeat;
-}
-.booknow-hero__overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(74,10,20,0.88) 0%, rgba(10,5,2,0.72) 100%);
-}
-.booknow-hero__content {
-  position: relative; z-index: 2; text-align: center; padding: 0 20px;
-}
-.booknow-hero__title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 5vw, 3.6rem);
-  font-weight: 600; color: var(--white); line-height: 1.2; margin-top: 14px;
-}
-.booknow-hero__title em { font-style: italic; color: var(--gold-light); }
-
-.booknow-section {
-  padding: var(--section-pad-y) var(--section-pad-x);
-  background: var(--ivory);
-}
-.booknow-section__inner {
-  max-width: 1200px; margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: clamp(40px, 6vw, 80px);
-  align-items: start;
+.booknow__form-note i {
+  color: var(--gold);
+  font-size: 0.7rem;
 }
 
 /* ══════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .booknow-section__inner { grid-template-columns: 1fr; gap: 48px; }
+  .booknow-section__inner {
+    grid-template-columns: 1fr;
+    gap: 52px;
+  }
 }
 @media (max-width: 768px) {
   .booknow__form { padding: 28px 20px; }
   .form__row     { grid-template-columns: 1fr; }
-  .form__checkboxes { grid-template-columns: 1fr; }
+  .booknow__badges { grid-template-columns: 1fr 1fr; }
+  .booknow-hero__lines { display: none; }
 }
 @media (max-width: 480px) {
-  .booknow__form { padding: 24px 16px; }
+  .booknow__form { padding: 22px 16px; }
   .booknow__wa-btn { width: 100%; justify-content: center; }
-  .booknow__submit { font-size: 0.82rem; }
+  .booknow__badges { grid-template-columns: 1fr; }
+  .booknow__submit { font-size: 0.8rem; }
 }

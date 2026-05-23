@@ -5,54 +5,134 @@ import './Services.css';
 
 const services = [
   {
-    icon: 'fas fa-camera',
-    title: 'Wedding Photography',
-    desc: 'Full-day coverage of every ritual, emotion, and celebration. From the morning prep to the final bidaai — nothing is missed.',
-    features: ['Unlimited edited photos', 'RAW files on request', '2 senior photographers', 'Online gallery delivery'],
+    id: 'wedding',
+    icon: 'fas fa-ring',
+    title: 'Wedding Photography & Films',
     tag: 'Most Popular',
+    tagColor: 'gold',
+    desc: 'Full-day cinematic coverage of your wedding — every ritual, emotion, and celebration documented with precision and heart. From the morning prep to the final bidaai, nothing is missed.',
+    features: [
+      '2 Senior Photographers',
+      'Full Day Coverage',
+      '600+ Edited Photos',
+      'Cinematic Highlight Film',
+      'Drone Coverage',
+      'Online Gallery Delivery',
+    ],
+    highlight: 'Starting ₹55,000',
   },
   {
-    icon: 'fas fa-film',
-    title: 'Cinematic Videography',
-    desc: 'Hollywood-grade wedding films with colour grading, original soundtrack, and drone aerial shots woven into your love story.',
-    features: ['4K resolution film', 'Drone footage included', 'Highlight reel + full film', 'Background score'],
+    id: 'haldi',
+    icon: 'fas fa-fire',
+    title: 'Haldi & Engagement Shoots',
     tag: 'Fan Favourite',
+    tagColor: 'maroon',
+    desc: 'Vibrant, colourful and full of life — we capture every splash, laugh, and tender moment of your pre-wedding functions with energy and creativity.',
+    features: [
+      '1 Senior Photographer',
+      '4–6 Hour Coverage',
+      '200+ Edited Photos',
+      'Candid & Posed Shots',
+      'Same-Day Sneak Peek',
+      'Online Gallery Delivery',
+    ],
+    highlight: 'Starting ₹15,000',
   },
   {
+    id: 'baby',
+    icon: 'fas fa-baby',
+    title: 'Baby & Kids Photography',
+    tag: null,
+    tagColor: null,
+    desc: 'Tiny fingers, big smiles, and pure joy. We create a safe and fun environment to capture your little one\'s best moments in the most natural and loving way.',
+    features: [
+      'Studio or Home Setup',
+      '2–3 Hour Session',
+      '100+ Edited Photos',
+      'Props Included',
+      'Theme Customisation',
+      'Print-Ready Files',
+    ],
+    highlight: 'Starting ₹8,000',
+  },
+  {
+    id: 'maternity',
     icon: 'fas fa-heart',
-    title: 'Pre-Wedding Shoot',
-    desc: 'A relaxed session before the big day to capture your chemistry, comfort, and the unique story of your relationship.',
-    features: ['3–5 hour shoot', '2 outfit changes', '50+ edited photos', 'Location of your choice'],
+    title: 'Maternity Shoots',
+    desc: 'Celebrating the most beautiful journey of your life. Elegant, emotional and timeless portraits for this magical phase — whether outdoors, at home, or in studio.',
     tag: null,
+    tagColor: null,
+    features: [
+      'Outdoor or Studio',
+      '2–4 Hour Session',
+      '150+ Edited Photos',
+      '2 Outfit Changes',
+      'Partner Included',
+      'Premium Editing',
+    ],
+    highlight: 'Starting ₹10,000',
   },
   {
-    icon: 'fas fa-drone',
-    title: 'Drone Videography',
-    desc: 'Breathtaking aerial perspectives of your venue, procession, and celebrations that ground cameras simply cannot capture.',
-    features: ['Licensed drone pilots', '4K aerial footage', 'Baraat & venue shots', 'Integrated into film'],
+    id: 'birthday',
+    icon: 'fas fa-birthday-cake',
+    title: 'Birthday Celebrations',
     tag: null,
+    tagColor: null,
+    desc: 'From 1st birthdays to milestone celebrations — every laugh, cake smash, and heartfelt moment beautifully preserved for your family to treasure forever.',
+    features: [
+      '1 Senior Photographer',
+      '3–5 Hour Coverage',
+      '200+ Edited Photos',
+      'Candid Moments',
+      'Group Shots Included',
+      'Quick Delivery',
+    ],
+    highlight: 'Starting ₹12,000',
   },
   {
-    icon: 'fas fa-book-open',
-    title: 'Premium Album Design',
-    desc: 'Handcrafted luxury wedding albums printed on fine art paper with leather covers — a heirloom to pass down generations.',
-    features: ['30–60 page spreads', 'Fine art printing', 'Leather/linen cover', 'Delivered to your door'],
+    id: 'family',
+    icon: 'fas fa-users',
+    title: 'Family Events & Functions',
     tag: null,
-  },
-  {
-    icon: 'fas fa-globe',
-    title: 'Destination Weddings',
-    desc: 'We travel anywhere your love story takes us — Udaipur palaces, Goa beaches, Rajasthan forts, or international venues.',
-    features: ['Pan India coverage', 'International travel', 'Full logistics handled', 'Multi-day packages'],
-    tag: 'Premium',
+    tagColor: null,
+    desc: 'Traditional functions, family gatherings, and cultural events covered with warmth, detail, and genuine storytelling that honours every tradition.',
+    features: [
+      '1–2 Photographers',
+      'Flexible Coverage Hours',
+      '300+ Edited Photos',
+      'Traditional & Candid',
+      'All Functions Covered',
+      'Pan India Travel',
+    ],
+    highlight: 'Starting ₹18,000',
   },
 ];
 
 const process = [
-  { step: '01', title: 'Enquiry & Consultation', desc: 'Reach out via WhatsApp or our form. We schedule a free call to understand your vision, venue, and requirements.' },
-  { step: '02', title: 'Booking & Planning', desc: 'We lock your date with a 30% advance. A dedicated coordinator guides you through shot lists and timeline planning.' },
-  { step: '03', title: 'The Wedding Day', desc: 'Our team arrives early, blends into your celebration, and captures every moment with precision and heart.' },
-  { step: '04', title: 'Editing & Delivery', desc: 'Preview photos in 48 hours. Full edited gallery in 30 days. Cinematic film in 60–75 days. Album in 90 days.' },
+  {
+    step: '01',
+    icon: 'fas fa-comments',
+    title: 'Free Consultation',
+    desc: 'Reach out via WhatsApp or the form. We schedule a free call to understand your vision, venue, and requirements.',
+  },
+  {
+    step: '02',
+    icon: 'fas fa-calendar-check',
+    title: 'Booking & Planning',
+    desc: 'We lock your date with a 30% advance. A dedicated coordinator guides you through planning, shot lists, and timelines.',
+  },
+  {
+    step: '03',
+    icon: 'fas fa-camera',
+    title: 'The Event Day',
+    desc: 'Our team arrives early, blends into your celebration, and captures every moment with precision and heart.',
+  },
+  {
+    step: '04',
+    icon: 'fas fa-images',
+    title: 'Editing & Delivery',
+    desc: 'Preview photos in 48 hours. Full edited gallery in 30 days. Cinematic film in 60–75 days.',
+  },
 ];
 
 function Services() {
@@ -60,8 +140,10 @@ function Services() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      }),
+      { threshold: 0.08 }
     );
     revealRefs.current.forEach(el => el && observer.observe(el));
     return () => observer.disconnect();
@@ -77,21 +159,28 @@ function Services() {
       {/* ── Page Hero ── */}
       <section className="services-hero">
         <div className="services-hero__overlay" />
+        <div className="services-hero__lines">
+          <span /><span /><span />
+        </div>
         <div className="services-hero__content">
           <span className="section-tag">✦ What We Offer</span>
           <h1 className="services-hero__title">
-            Services Crafted for <em>Every Love Story</em>
+            Every Moment Deserves
+            <em> to Be Remembered</em>
           </h1>
+          <p className="services-hero__sub">
+            Mumbai · Pan India · International
+          </p>
         </div>
       </section>
 
       {/* ── Services Grid ── */}
-      <section className="services-grid-section">
-        <div className="services-grid-section__inner">
+      <section className="services-section">
+        <div className="services-section__inner">
           <div className="reveal" ref={addRef}>
             <SectionHeader
               tag="✦ Our Services"
-              titleHtml="Everything You Need, <em>Under One Roof</em>"
+              titleHtml="Capturing Every <em>Chapter of Your Life</em>"
               center
             />
           </div>
@@ -100,16 +189,29 @@ function Services() {
             {services.map((s, i) => (
               <div
                 className="service__card reveal"
-                key={s.title}
-                style={{ transitionDelay: `${i * 0.1}s` }}
+                key={s.id}
+                style={{ transitionDelay: `${i * 0.09}s` }}
                 ref={addRef}
               >
-                {s.tag && <span className="service__tag">{s.tag}</span>}
-                <div className="service__icon">
-                  <i className={s.icon} />
+                {/* Tag */}
+                {s.tag && (
+                  <span className={`service__tag service__tag--${s.tagColor}`}>
+                    {s.tag}
+                  </span>
+                )}
+
+                {/* Top */}
+                <div className="service__top">
+                  <div className="service__icon">
+                    <i className={s.icon} />
+                  </div>
+                  <span className="service__highlight">{s.highlight}</span>
                 </div>
+
                 <h3 className="service__title">{s.title}</h3>
                 <p className="service__desc">{s.desc}</p>
+
+                {/* Features */}
                 <ul className="service__features">
                   {s.features.map(f => (
                     <li key={f}>
@@ -118,16 +220,22 @@ function Services() {
                     </li>
                   ))}
                 </ul>
+
+                {/* CTA */}
                 <Link to="/book-now" className="service__cta">
-                  Enquire Now <i className="fas fa-arrow-right" />
+                  Enquire Now
+                  <i className="fas fa-arrow-right" />
                 </Link>
+
+                {/* Hover line */}
+                <div className="service__line" />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Process Section ── */}
+      {/* ── Process ── */}
       <section className="process-section">
         <div className="process-section__inner">
           <div className="reveal" ref={addRef}>
@@ -144,15 +252,18 @@ function Services() {
               <div
                 className="process__card reveal"
                 key={p.step}
-                style={{ transitionDelay: `${i * 0.1}s` }}
+                style={{ transitionDelay: `${i * 0.12}s` }}
                 ref={addRef}
               >
+                <div className="process__icon-wrap">
+                  <i className={p.icon} />
+                </div>
                 <span className="process__step">{p.step}</span>
                 <h3 className="process__title">{p.title}</h3>
                 <p className="process__desc">{p.desc}</p>
                 {i < process.length - 1 && (
-                  <div className="process__arrow">
-                    <i className="fas fa-arrow-right" />
+                  <div className="process__connector">
+                    <i className="fas fa-chevron-right" />
                   </div>
                 )}
               </div>
@@ -164,17 +275,22 @@ function Services() {
       {/* ── CTA ── */}
       <section className="services-cta">
         <div className="services-cta__inner reveal" ref={addRef}>
-          <span className="section-tag">✦ Get Started</span>
+          <span className="section-tag">✦ Ready to Begin?</span>
           <h2 className="services-cta__title">
-            Ready to Book Your <em>Wedding Coverage?</em>
+            Let's Create Something <em>Unforgettable Together</em>
           </h2>
           <p className="services-cta__sub">
-            Dates fill up fast — especially for peak wedding season.
-            Reach out today and let's start planning.
+            Dates fill up fast. Reach out today and let's start planning
+            your perfect coverage.
           </p>
           <div className="services-cta__btns">
-            <Link to="/book-now" className="btn-primary">Book Now</Link>
-            <Link to="/packages" className="btn-outline">View Packages</Link>
+            <Link to="/book-now" className="btn-primary">
+              Book a Session
+              <i className="fas fa-arrow-right" />
+            </Link>
+            <Link to="/packages" className="btn-outline">
+              View Packages
+            </Link>
           </div>
         </div>
       </section>

@@ -1,143 +1,247 @@
-/* ─── CSS VARIABLES ─── */
+/* ══════════════════════════════════════
+   CSS VARIABLES
+══════════════════════════════════════ */
 :root {
-  --maroon: #7b1c2a;
+  --maroon:      #7b1c2a;
   --maroon-dark: #4e0f18;
-  --gold: #c9973a;
-  --gold-light: #e8c97a;
-  --ivory: #fdf6ec;
-  --ivory-dark: #f3e8d4;
-  --charcoal: #1a1208;
-  --text-muted: #7a6a58;
-  --white: #ffffff;
-  --shadow: 0 8px 32px rgba(26, 18, 8, 0.12);
-  --transition: all 0.3s ease;
+  --gold:        #c9973a;
+  --gold-light:  #e8c97a;
+  --ivory:       #fdf6ec;
+  --ivory-dark:  #f3e8d4;
+  --charcoal:    #0e0a06;
+  --charcoal-2:  #1a1208;
+  --text-muted:  #7a6a58;
+  --white:       #ffffff;
+  --shadow:      0 8px 32px rgba(14, 10, 6, 0.15);
+  --transition:  all 0.3s ease;
 
-  /* Spacing scale */
-  --section-pad-y: 100px;
+  --section-pad-y: 110px;
   --section-pad-x: 60px;
-  --max-width: 1300px;
+  --max-width:     1300px;
 }
 
-/* ─── RESET ─── */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
+/* ══════════════════════════════════════
+   RESET
+══════════════════════════════════════ */
+*, *::before, *::after {
+  margin: 0; padding: 0;
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
 }
-
 body {
   font-family: 'Jost', sans-serif;
   background: var(--ivory);
-  color: var(--charcoal);
+  color: var(--charcoal-2);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* ─── SCROLLBAR ─── */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--ivory-dark); }
-::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
-
-/* ─── TYPOGRAPHY ─── */
-h1, h2, h3, h4 {
-  font-family: 'Cormorant Garamond', serif;
-  line-height: 1.15;
-}
-a  { text-decoration: none; color: inherit; }
+a   { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 button { font-family: 'Jost', sans-serif; cursor: pointer; border: none; }
+button, a, input, select, textarea { touch-action: manipulation; }
 
-/* Touch targets — all interactive elements min 44px */
-button, a, input, select, textarea {
-  touch-action: manipulation;
+/* ══════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════ */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: var(--charcoal); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ══════════════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════════════ */
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.12;
 }
 
-/* ─── BUTTONS ─── */
+/* ══════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════ */
 .btn-primary {
   background: var(--gold);
   color: var(--charcoal);
-  padding: 14px 36px;
+  padding: 14px 38px;
   font-family: 'Jost', sans-serif;
   font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   border: none;
-  border-radius: 2px;
+  border-radius: 0;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   transition: var(--transition);
-  min-height: 48px;
+  min-height: 50px;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
 }
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--white);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover::after { opacity: 0.12; }
 .btn-primary:hover {
-  background: var(--gold-light);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(201, 151, 58, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(201,151,58,0.4);
 }
 
 .btn-outline {
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255,255,255,0.5);
   color: var(--white);
-  padding: 14px 36px;
+  padding: 14px 38px;
   font-family: 'Jost', sans-serif;
   font-weight: 500;
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   background: transparent;
-  border-radius: 2px;
+  border-radius: 0;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   transition: var(--transition);
-  min-height: 48px;
+  min-height: 50px;
   white-space: nowrap;
 }
 .btn-outline:hover {
   border-color: var(--gold);
   color: var(--gold-light);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
-/* ─── SCROLL REVEAL ─── */
+/* ══════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════ */
+
+/* ── Scroll reveal ── */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1),
+              transform 0.8s cubic-bezier(0.4,0,0.2,1);
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ─── PAGE WRAPPER ─── */
+/* ── Word-by-word text reveal ── */
+.text-reveal {
+  overflow: hidden;
+  display: inline-block;
+}
+.text-reveal__inner {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1),
+              opacity 0.7s ease;
+}
+.text-reveal__inner.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── Fade in up (for staggered grids) ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Fade in (general) ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Slide in from left ── */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Slide in from right ── */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Scale in ── */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Gold shimmer on text ── */
+@keyframes shimmerText {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    var(--gold-light) 40%,
+    var(--gold) 60%,
+    var(--gold-light) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerText 3s linear infinite;
+}
+
+/* ── Floating animation ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ── Pulse ring ── */
+@keyframes pulseRing {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* ══════════════════════════════════════
+   PAGE WRAPPER
+══════════════════════════════════════ */
 .page-wrapper { padding-top: 80px; }
 
-/* ─── SECTION COMMONS ─── */
+/* ══════════════════════════════════════
+   SECTION COMMONS
+══════════════════════════════════════ */
 .section-tag {
   display: inline-block;
   color: var(--gold);
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   font-weight: 600;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  font-family: 'Jost', sans-serif;
 }
 .section-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-size: clamp(1.9rem, 4vw, 3.4rem);
   font-weight: 600;
-  color: var(--charcoal);
-  line-height: 1.15;
+  color: var(--charcoal-2);
+  line-height: 1.12;
   margin-bottom: 20px;
 }
 .section-title em {
@@ -145,74 +249,41 @@ button, a, input, select, textarea {
   color: var(--maroon);
 }
 .section-line {
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin-bottom: 50px;
+  width: 48px;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin-bottom: 52px;
 }
-.center { text-align: center; }
-.center .section-line { margin: 0 auto 50px; }
+.center                { text-align: center; }
+.center .section-line  { margin: 0 auto 52px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
 
-/* ─── CONTAINER HELPER ─── */
-.container {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--section-pad-x);
+/* ── Divider ornament ── */
+.ornament {
+  text-align: center;
+  color: var(--gold);
+  font-size: 1.1rem;
+  letter-spacing: 0.6em;
+  margin: 60px 0;
+  opacity: 0.5;
 }
 
 /* ══════════════════════════════════════
-   GLOBAL RESPONSIVE BREAKPOINTS
+   RESPONSIVE SCALE
 ══════════════════════════════════════ */
-
-/* Large screens 1440px+ */
 @media (min-width: 1440px) {
-  :root {
-    --section-pad-x: 80px;
-  }
+  :root { --section-pad-x: 80px; }
 }
-
-/* Laptop 1024–1440px — default, no changes needed */
-
-/* Tablet landscape 768–1024px */
 @media (max-width: 1024px) {
-  :root {
-    --section-pad-y: 80px;
-    --section-pad-x: 40px;
-  }
-  .page-wrapper { padding-top: 75px; }
+  :root { --section-pad-y: 80px; --section-pad-x: 40px; }
+  .page-wrapper { padding-top: 72px; }
 }
-
-/* Tablet portrait / large mobile 480–768px */
 @media (max-width: 768px) {
-  :root {
-    --section-pad-y: 64px;
-    --section-pad-x: 24px;
-  }
-  .page-wrapper { padding-top: 68px; }
-
-  .btn-primary,
-  .btn-outline {
-    padding: 13px 28px;
-    font-size: 0.82rem;
-  }
-
-  .section-line { margin-bottom: 36px; }
-  .center .section-line { margin: 0 auto 36px; }
+  :root { --section-pad-y: 64px; --section-pad-x: 24px; }
+  .page-wrapper { padding-top: 65px; }
+  .btn-primary, .btn-outline { padding: 13px 28px; font-size: 0.8rem; }
 }
-
-/* Mobile 480px and below */
 @media (max-width: 480px) {
-  :root {
-    --section-pad-y: 52px;
-    --section-pad-x: 16px;
-  }
-  .page-wrapper { padding-top: 64px; }
-
-  .btn-primary,
-  .btn-outline {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
+  :root { --section-pad-y: 52px; --section-pad-x: 16px; }
+  .page-wrapper { padding-top: 60px; }
+  .btn-primary, .btn-outline { width: 100%; justify-content: center; }
 }

@@ -5,93 +5,130 @@ import './Packages.css';
 
 const packages = [
   {
-    name: 'Silver',
-    price: '55,000',
+    name: 'Essential',
+    price: '15,000',
     tag: null,
-    tagline: 'Perfect for intimate weddings',
-    color: 'silver',
+    tagline: 'Perfect for small celebrations',
+    color: 'essential',
+    icon: 'fas fa-seedling',
     features: [
-      { text: '1 Senior Photographer',         included: true },
-      { text: '8 Hours Coverage',               included: true },
-      { text: '300+ Edited Photos',             included: true },
-      { text: 'Online Gallery Delivery',        included: true },
-      { text: 'Candid Photography',             included: true },
+      { text: '1 Senior Photographer',          included: true  },
+      { text: '4 Hours Coverage',               included: true  },
+      { text: '150+ Edited Photos',             included: true  },
+      { text: 'Online Gallery Delivery',        included: true  },
+      { text: 'Candid Photography',             included: true  },
       { text: 'Videography',                    included: false },
       { text: 'Drone Coverage',                 included: false },
-      { text: 'Pre-Wedding Shoot',              included: false },
+      { text: 'Pre-Event Shoot',                included: false },
       { text: 'Premium Album',                  included: false },
-      { text: 'Same-Day Edit (Highlights)',     included: false },
+      { text: 'Same-Day Highlights',            included: false },
     ],
   },
   {
-    name: 'Gold',
-    price: '1,10,000',
+    name: 'Premium',
+    price: '35,000',
     tag: 'Most Popular',
     tagline: 'Our best-selling complete package',
-    color: 'gold',
+    color: 'premium',
+    icon: 'fas fa-star',
     features: [
-      { text: '2 Senior Photographers',         included: true },
-      { text: 'Full Day Coverage',              included: true },
-      { text: '600+ Edited Photos',             included: true },
-      { text: 'Online Gallery Delivery',        included: true },
-      { text: 'Candid Photography',             included: true },
-      { text: 'Cinematic Highlight Film',       included: true },
-      { text: 'Drone Coverage',                 included: true },
-      { text: 'Pre-Wedding Shoot',              included: false },
+      { text: '2 Senior Photographers',         included: true  },
+      { text: 'Full Day Coverage',              included: true  },
+      { text: '400+ Edited Photos',             included: true  },
+      { text: 'Online Gallery Delivery',        included: true  },
+      { text: 'Candid Photography',             included: true  },
+      { text: 'Cinematic Highlight Film',       included: true  },
+      { text: 'Drone Coverage',                 included: true  },
+      { text: 'Pre-Event Shoot',                included: false },
       { text: 'Premium Album',                  included: false },
-      { text: 'Same-Day Edit (Highlights)',     included: false },
+      { text: 'Same-Day Highlights',            included: false },
     ],
   },
   {
-    name: 'Platinum',
-    price: '2,20,000',
-    tag: 'Premium',
+    name: 'Signature',
+    price: '65,000',
+    tag: 'All Inclusive',
     tagline: 'The ultimate luxury experience',
-    color: 'platinum',
+    color: 'signature',
+    icon: 'fas fa-crown',
     features: [
-      { text: '3 Senior Photographers',         included: true },
-      { text: 'Multi-Day Full Coverage',        included: true },
-      { text: '1000+ Edited Photos',            included: true },
-      { text: 'Online Gallery Delivery',        included: true },
-      { text: 'Candid Photography',             included: true },
-      { text: 'Full Cinematic Film + Teaser',   included: true },
-      { text: 'Drone Coverage',                 included: true },
-      { text: 'Pre-Wedding Shoot Included',     included: true },
-      { text: 'Luxury Leather Album',           included: true },
-      { text: 'Same-Day Edit (Highlights)',     included: true },
+      { text: '3 Senior Photographers',         included: true  },
+      { text: 'Multi-Day Full Coverage',        included: true  },
+      { text: '800+ Edited Photos',             included: true  },
+      { text: 'Online Gallery Delivery',        included: true  },
+      { text: 'Candid Photography',             included: true  },
+      { text: 'Full Cinematic Film + Teaser',   included: true  },
+      { text: 'Drone Coverage',                 included: true  },
+      { text: 'Pre-Event Shoot Included',       included: true  },
+      { text: 'Luxury Leather Album',           included: true  },
+      { text: 'Same-Day Highlights',            included: true  },
     ],
   },
 ];
 
 const addons = [
-  { icon: 'fas fa-drone',        title: 'Drone Add-On',          price: '₹15,000',  desc: 'Aerial footage of venue, baraat & celebrations.' },
-  { icon: 'fas fa-book-open',    title: 'Premium Album',         price: '₹18,000',  desc: '30-page fine art album with leather cover.' },
-  { icon: 'fas fa-heart',        title: 'Pre-Wedding Shoot',     price: '₹20,000',  desc: '4-hour shoot at location of your choice.' },
-  { icon: 'fas fa-film',         title: 'Same-Day Edit',         price: '₹12,000',  desc: '3-min highlight reel screened at reception.' },
-  { icon: 'fas fa-globe',        title: 'Destination Travel',    price: 'Custom',   desc: 'Pan India & international — ask for a quote.' },
-  { icon: 'fas fa-photo-video',  title: 'Extra Photographer',    price: '₹8,000/day', desc: 'Add a second or third shooter to any package.' },
+  {
+    icon: 'fas fa-drone',
+    title: 'Drone Add-On',
+    price: '₹8,000',
+    desc: 'Aerial footage of venue and celebrations.',
+  },
+  {
+    icon: 'fas fa-book-open',
+    title: 'Premium Album',
+    price: '₹12,000',
+    desc: '30-page fine art album with leather cover.',
+  },
+  {
+    icon: 'fas fa-heart',
+    title: 'Pre-Event Shoot',
+    price: '₹10,000',
+    desc: '3-hour shoot at location of your choice.',
+  },
+  {
+    icon: 'fas fa-film',
+    title: 'Same-Day Edit',
+    price: '₹8,000',
+    desc: '3-min highlight reel ready same day.',
+  },
+  {
+    icon: 'fas fa-globe',
+    title: 'Destination Travel',
+    price: 'Custom',
+    desc: 'Pan India & international — ask for quote.',
+  },
+  {
+    icon: 'fas fa-user-plus',
+    title: 'Extra Photographer',
+    price: '₹5,000/day',
+    desc: 'Add a second or third shooter to any package.',
+  },
 ];
 
 const faqs = [
   {
     q: 'How do I confirm my booking?',
-    a: 'A 30% advance payment via UPI, bank transfer, or card confirms your date. We send a formal agreement within 24 hours of booking.',
+    a: 'A 30% advance payment confirms your date. We send a formal booking confirmation within 24 hours. Balance is split — 40% one month before the event and 30% on the day itself.',
   },
   {
     q: 'When will we receive our photos and films?',
-    a: 'Preview images are delivered within 48 hours. Fully edited photos in 30–45 days. Cinematic films in 60–75 days. Albums within 90 days of photo selection.',
+    a: 'Preview sneak-peek images are delivered within 48 hours. Fully edited gallery in 30–45 days. Cinematic films in 60–75 days. Albums within 90 days of photo selection.',
   },
   {
     q: 'Can we customise a package?',
-    a: 'Yes! Our packages are a starting guide. We create fully customised quotes based on wedding duration, number of functions, city, and your specific needs.',
+    a: 'Absolutely! Our packages are a starting point. We build fully custom quotes based on your event type, duration, functions, city, and specific needs.',
   },
   {
-    q: 'What is your payment policy?',
-    a: '30% advance to confirm. 40% one month before the wedding. 30% on the wedding day. We accept UPI, bank transfer, and cards.',
+    q: 'Do you cover multiple functions like Haldi, Mehndi, Sangeet?',
+    a: 'Yes! We cover all pre-wedding and wedding functions. Multi-function discounts are available — reach out for a bundled quote.',
   },
   {
-    q: 'Do you cover multi-day weddings and all functions?',
-    a: 'Absolutely. We cover Haldi, Mehndi, Sangeet, Engagement, Wedding Day, and Reception. Multi-function discounts available on request.',
+    q: 'Do you travel outside Mumbai?',
+    a: 'Yes — we cover Pan India and international destinations. Travel and accommodation costs are added to the package at actuals.',
+  },
+  {
+    q: 'What is your cancellation policy?',
+    a: 'Advance payments are non-refundable but fully transferable to a rescheduled date. We are flexible and work with couples in every situation.',
   },
 ];
 
@@ -99,11 +136,20 @@ function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
   return (
     <div className={`faq__item ${open ? 'faq__item--open' : ''}`}>
-      <button className="faq__question" onClick={() => setOpen(o => !o)}>
-        {q}
-        <i className={`fas ${open ? 'fa-minus' : 'fa-plus'}`} />
+      <button
+        className="faq__question"
+        onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
+      >
+        <span>{q}</span>
+        <div className="faq__icon">
+          <i className={`fas ${open ? 'fa-minus' : 'fa-plus'}`} />
+        </div>
       </button>
-      <div className="faq__answer">
+      <div
+        className="faq__answer"
+        style={{ maxHeight: open ? '300px' : '0' }}
+      >
         <p>{a}</p>
       </div>
     </div>
@@ -111,20 +157,22 @@ function FaqItem({ q, a }) {
 }
 
 function Packages() {
-  const [billing, setBilling] = useState('per-function'); // 'per-function' | 'full-wedding'
   const revealRefs = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      }),
+      { threshold: 0.08 }
     );
     revealRefs.current.forEach(el => el && observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
   const addRef = el => {
-    if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el);
+    if (el && !revealRefs.current.includes(el))
+      revealRefs.current.push(el);
   };
 
   return (
@@ -133,11 +181,18 @@ function Packages() {
       {/* ── Page Hero ── */}
       <section className="packages-hero">
         <div className="packages-hero__overlay" />
+        <div className="packages-hero__lines">
+          <span /><span /><span />
+        </div>
         <div className="packages-hero__content">
-          <span className="section-tag">✦ Pricing</span>
+          <span className="section-tag">✦ Investment</span>
           <h1 className="packages-hero__title">
-            Transparent Packages, <em>No Hidden Costs</em>
+            Transparent Pricing,
+            <em> No Hidden Costs</em>
           </h1>
+          <p className="packages-hero__sub">
+            Mumbai · Pan India · International
+          </p>
         </div>
       </section>
 
@@ -148,33 +203,10 @@ function Packages() {
           <div className="reveal" ref={addRef}>
             <SectionHeader
               tag="✦ Our Packages"
-              titleHtml="Choose the Perfect <em>Coverage for You</em>"
+              titleHtml="Choose the Coverage That <em>Fits Your Story</em>"
               center
             />
           </div>
-
-          {/* Toggle */}
-          <div className="packages__toggle reveal" ref={addRef}>
-            <button
-              className={billing === 'per-function' ? 'active' : ''}
-              onClick={() => setBilling('per-function')}
-            >
-              Per Function
-            </button>
-            <button
-              className={billing === 'full-wedding' ? 'active' : ''}
-              onClick={() => setBilling('full-wedding')}
-            >
-              Full Wedding
-            </button>
-          </div>
-
-          {billing === 'full-wedding' && (
-            <p className="packages__toggle-note reveal" ref={addRef}>
-              ✦ Full wedding packages include all functions at a discounted bundled rate.
-              <Link to="/book-now"> Contact us for a custom quote.</Link>
-            </p>
-          )}
 
           {/* Cards */}
           <div className="packages__grid">
@@ -185,38 +217,57 @@ function Packages() {
                 style={{ transitionDelay: `${i * 0.12}s` }}
                 ref={addRef}
               >
+                {/* Tag */}
                 {pkg.tag && (
                   <div className="package__tag">{pkg.tag}</div>
                 )}
 
+                {/* Header */}
                 <div className="package__header">
+                  <div className="package__icon">
+                    <i className={pkg.icon} />
+                  </div>
                   <span className="package__name">{pkg.name}</span>
                   <span className="package__tagline">{pkg.tagline}</span>
                   <div className="package__price">
                     <span className="package__currency">₹</span>
                     <span className="package__amount">{pkg.price}</span>
-                    <span className="package__per">/ function</span>
                   </div>
+                  <span className="package__per">onwards</span>
                 </div>
 
+                {/* Features */}
                 <ul className="package__features">
                   {pkg.features.map(f => (
                     <li
                       key={f.text}
                       className={f.included ? 'included' : 'excluded'}
                     >
-                      <i className={`fas ${f.included ? 'fa-check' : 'fa-times'}`} />
+                      <i className={
+                        `fas ${f.included ? 'fa-check' : 'fa-times'}`
+                      } />
                       {f.text}
                     </li>
                   ))}
                 </ul>
 
+                {/* CTA */}
                 <Link to="/book-now" className="package__cta">
-                  Book {pkg.name} Package
+                  Book {pkg.name}
+                  <i className="fas fa-arrow-right" />
                 </Link>
               </div>
             ))}
           </div>
+
+          {/* Note */}
+          <p className="packages__note reveal" ref={addRef}>
+            <i className="fas fa-info-circle" />
+            All packages are fully customisable. Prices vary based on
+            event type, duration, and location.
+            <Link to="/book-now"> Get a custom quote →</Link>
+          </p>
+
         </div>
       </section>
 
@@ -225,7 +276,7 @@ function Packages() {
         <div className="addons-section__inner">
           <div className="reveal" ref={addRef}>
             <SectionHeader
-              tag="✦ Customise Further"
+              tag="✦ Enhance Your Package"
               titleHtml="Popular <em>Add-Ons</em>"
               center
               light
@@ -268,8 +319,15 @@ function Packages() {
           </div>
 
           <div className="faq__list">
-            {faqs.map(f => (
-              <FaqItem key={f.q} q={f.q} a={f.a} />
+            {faqs.map((f, i) => (
+              <div
+                key={f.q}
+                className="reveal"
+                style={{ transitionDelay: `${i * 0.07}s` }}
+                ref={addRef}
+              >
+                <FaqItem q={f.q} a={f.a} />
+              </div>
             ))}
           </div>
         </div>
@@ -278,23 +336,28 @@ function Packages() {
       {/* ── CTA ── */}
       <section className="packages-cta">
         <div className="packages-cta__inner reveal" ref={addRef}>
-          <span className="section-tag">✦ Ready to Book?</span>
+          <span className="section-tag">✦ Let's Talk</span>
           <h2 className="packages-cta__title">
-            Can't Find the Right Fit? <em>Let's Build Yours.</em>
+            Can't Find the Right Fit?
+            <em> Let's Build Yours.</em>
           </h2>
           <p className="packages-cta__sub">
-            Every wedding is different. WhatsApp us and we'll design a
-            custom package around your exact needs and budget.
+            Every event is different. WhatsApp us and we'll design
+            a custom package around your exact needs and budget.
           </p>
           <div className="packages-cta__btns">
-            <Link to="/book-now" className="btn-primary">Get a Custom Quote</Link>
+            <Link to="/book-now" className="btn-primary">
+              Get a Custom Quote
+              <i className="fas fa-arrow-right" />
+            </Link>
             <a
               href="https://wa.me/919999999999"
               target="_blank"
               rel="noreferrer"
               className="btn-wa"
             >
-              <i className="fab fa-whatsapp" /> Chat on WhatsApp
+              <i className="fab fa-whatsapp" />
+              Chat on WhatsApp
             </a>
           </div>
         </div>
