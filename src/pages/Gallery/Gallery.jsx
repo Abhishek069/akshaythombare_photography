@@ -7,7 +7,7 @@ import images from './imageManifest';
 import './Gallery.css';
 
 const ALL     = 'all';
-const PREVIEW = 2;
+const PREVIEW = 3;
 
 // ── YouTube films data ──
 const films = [
@@ -103,8 +103,6 @@ function LazyImage({ src, alt, onClick, priority = false }) {
         <img
           src={src}
           alt={alt}
-          width="400"
-          height="300"
           loading={priority ? 'eager' : 'lazy'}
           fetchpriority={priority ? 'high' : 'auto'}
           decoding="async"

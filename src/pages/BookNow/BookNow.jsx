@@ -28,9 +28,9 @@ const eventTypes = [
 ];
 
 const packageOptions = [
-  'Essential (₹15,000 onwards)',
-  'Premium (₹35,000 onwards)',
-  'Signature (₹65,000 onwards)',
+  'Essential (â‚¹7,500 onwards)',
+  'Premium (â‚¹17,500 onwards)',
+  'Signature (â‚¹32,500 onwards)',
   'Custom Package',
 ];
 
@@ -50,7 +50,7 @@ const contactInfo = [
   {
     icon: 'fas fa-map-marker-alt',
     label: 'Based In',
-    value: 'Borivali West, Mumbai — 400092',
+    value: 'Borivali West, Mumbai â€” 400092',
     link: null,
   },
   {
@@ -65,7 +65,7 @@ const badges = [
   { icon: 'fas fa-shield-alt',  text: 'Secure Booking' },
   { icon: 'fas fa-undo',         text: 'Flexible Reschedule' },
   { icon: 'fas fa-trophy',       text: 'Award Winning' },
-  { icon: 'fas fa-star',         text: '4.9★ Rated' },
+  { icon: 'fas fa-star',         text: '4.9â˜… Rated' },
 ];
 
 function BookNow() {
@@ -127,7 +127,7 @@ function BookNow() {
     setSending(true);
 
     const msg = [
-      `Hi Akshay! 🙏`,
+      `Hi Akshay! ðŸ™`,
       ``,
       `*Name:* ${form.name}`,
       `*Phone:* ${form.phone}`,
@@ -156,14 +156,14 @@ function BookNow() {
   return (
     <main className="page-wrapper">
 
-      {/* ── Page Hero ── */}
+      {/* â”€â”€ Page Hero â”€â”€ */}
       <section className="booknow-hero">
         <div className="booknow-hero__overlay" />
         <div className="booknow-hero__lines">
           <span /><span /><span />
         </div>
         <div className="booknow-hero__content">
-          <span className="section-tag">✦ Let's Connect</span>
+          <span className="section-tag">âœ¦ Let's Connect</span>
           <h1 className="booknow-hero__title">
             Let's Plan Your
             <em> Perfect Session</em>
@@ -174,20 +174,20 @@ function BookNow() {
         </div>
       </section>
 
-      {/* ── Main Section ── */}
+      {/* â”€â”€ Main Section â”€â”€ */}
       <section className="booknow-section">
         <div className="booknow-section__inner">
 
-          {/* ── Left — Info ── */}
+          {/* â”€â”€ Left â€” Info â”€â”€ */}
           <div className="booknow__info reveal" ref={addRef}>
             <SectionHeader
-              tag="✦ Get In Touch"
+              tag="âœ¦ Get In Touch"
               titleHtml="We'd Love to Hear <em>From You</em>"
             />
 
             <p className="booknow__info-intro">
               Whether you have a date in mind or are just exploring,
-              we're here to help. WhatsApp us anytime — we usually
+              we're here to help. WhatsApp us anytime â€” we usually
               reply within 30 minutes!
             </p>
 
@@ -233,7 +233,7 @@ function BookNow() {
             </div>
           </div>
 
-          {/* ── Right — Form ── */}
+          {/* â”€â”€ Right â€” Form â”€â”€ */}
           <div className="booknow__form reveal" ref={addRef}>
 
             {/* Success banner */}
@@ -361,7 +361,7 @@ function BookNow() {
                 value={form.eventType}
                 onChange={handleChange}
               >
-                <option value="">— Select Event Type —</option>
+                <option value="">â€” Select Event Type â€”</option>
                 {eventTypes.map(e => (
                   <option key={e} value={e}>{e}</option>
                 ))}
@@ -382,7 +382,7 @@ function BookNow() {
                 value={form.package}
                 onChange={handleChange}
               >
-                <option value="">— Select a Package —</option>
+                <option value="">â€” Select a Package â€”</option>
                 {packageOptions.map(p => (
                   <option key={p} value={p}>{p}</option>
                 ))}

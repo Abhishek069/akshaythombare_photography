@@ -10,7 +10,7 @@ const services = [
     title: 'Wedding Photography & Films',
     tag: 'Most Popular',
     tagColor: 'gold',
-    desc: 'Full-day cinematic coverage of your wedding — every ritual, emotion, and celebration documented with precision and heart. From the morning prep to the final bidaai, nothing is missed.',
+    desc: 'Full-day cinematic coverage of your wedding â€” every ritual, emotion, and celebration documented with precision and heart. From the morning prep to the final bidaai, nothing is missed.',
     features: [
       '2 Senior Photographers',
       'Full Day Coverage',
@@ -19,7 +19,7 @@ const services = [
       'Drone Coverage',
       'Online Gallery Delivery',
     ],
-    highlight: 'Starting ₹55,000',
+    highlight: 'Starting â‚¹27,500',
   },
   {
     id: 'haldi',
@@ -27,16 +27,16 @@ const services = [
     title: 'Haldi & Engagement Shoots',
     tag: 'Fan Favourite',
     tagColor: 'maroon',
-    desc: 'Vibrant, colourful and full of life — we capture every splash, laugh, and tender moment of your pre-wedding functions with energy and creativity.',
+    desc: 'Vibrant, colourful and full of life â€” we capture every splash, laugh, and tender moment of your pre-wedding functions with energy and creativity.',
     features: [
       '1 Senior Photographer',
-      '4–6 Hour Coverage',
+      '4â€“6 Hour Coverage',
       '200+ Edited Photos',
       'Candid & Posed Shots',
       'Same-Day Sneak Peek',
       'Online Gallery Delivery',
     ],
-    highlight: 'Starting ₹15,000',
+    highlight: 'Starting â‚¹7,500',
   },
   {
     id: 'baby',
@@ -47,30 +47,30 @@ const services = [
     desc: 'Tiny fingers, big smiles, and pure joy. We create a safe and fun environment to capture your little one\'s best moments in the most natural and loving way.',
     features: [
       'Studio or Home Setup',
-      '2–3 Hour Session',
+      '2â€“3 Hour Session',
       '100+ Edited Photos',
       'Props Included',
       'Theme Customisation',
       'Print-Ready Files',
     ],
-    highlight: 'Starting ₹8,000',
+    highlight: 'Starting â‚¹4,000',
   },
   {
     id: 'maternity',
     icon: 'fas fa-heart',
     title: 'Maternity Shoots',
-    desc: 'Celebrating the most beautiful journey of your life. Elegant, emotional and timeless portraits for this magical phase — whether outdoors, at home, or in studio.',
+    desc: 'Celebrating the most beautiful journey of your life. Elegant, emotional and timeless portraits for this magical phase â€” whether outdoors, at home, or in studio.',
     tag: null,
     tagColor: null,
     features: [
       'Outdoor or Studio',
-      '2–4 Hour Session',
+      '2â€“4 Hour Session',
       '150+ Edited Photos',
       '2 Outfit Changes',
       'Partner Included',
       'Premium Editing',
     ],
-    highlight: 'Starting ₹10,000',
+    highlight: 'Starting â‚¹5,000',
   },
   {
     id: 'birthday',
@@ -78,16 +78,16 @@ const services = [
     title: 'Birthday Celebrations',
     tag: null,
     tagColor: null,
-    desc: 'From 1st birthdays to milestone celebrations — every laugh, cake smash, and heartfelt moment beautifully preserved for your family to treasure forever.',
+    desc: 'From 1st birthdays to milestone celebrations â€” every laugh, cake smash, and heartfelt moment beautifully preserved for your family to treasure forever.',
     features: [
       '1 Senior Photographer',
-      '3–5 Hour Coverage',
+      '3â€“5 Hour Coverage',
       '200+ Edited Photos',
       'Candid Moments',
       'Group Shots Included',
       'Quick Delivery',
     ],
-    highlight: 'Starting ₹12,000',
+    highlight: 'Starting â‚¹6,000',
   },
   {
     id: 'family',
@@ -97,14 +97,14 @@ const services = [
     tagColor: null,
     desc: 'Traditional functions, family gatherings, and cultural events covered with warmth, detail, and genuine storytelling that honours every tradition.',
     features: [
-      '1–2 Photographers',
+      '1â€“2 Photographers',
       'Flexible Coverage Hours',
       '300+ Edited Photos',
       'Traditional & Candid',
       'All Functions Covered',
       'Pan India Travel',
     ],
-    highlight: 'Starting ₹18,000',
+    highlight: 'Starting â‚¹9,000',
   },
 ];
 
@@ -131,7 +131,7 @@ const process = [
     step: '04',
     icon: 'fas fa-images',
     title: 'Editing & Delivery',
-    desc: 'Preview photos in 48 hours. Full edited gallery in 30 days. Cinematic film in 60–75 days.',
+    desc: 'Preview photos in 48 hours. Full edited gallery in 30 days. Cinematic film in 60â€“75 days.',
   },
 ];
 
@@ -156,30 +156,30 @@ function Services() {
   return (
     <main className="page-wrapper">
 
-      {/* ── Page Hero ── */}
+      {/* â”€â”€ Page Hero â”€â”€ */}
       <section className="services-hero">
         <div className="services-hero__overlay" />
         <div className="services-hero__lines">
           <span /><span /><span />
         </div>
         <div className="services-hero__content">
-          <span className="section-tag">✦ What We Offer</span>
+          <span className="section-tag">âœ¦ What We Offer</span>
           <h1 className="services-hero__title">
             Every Moment Deserves
             <em> to Be Remembered</em>
           </h1>
           <p className="services-hero__sub">
-            Mumbai · Pan India · International
+            Mumbai Â· Pan India Â· International
           </p>
         </div>
       </section>
 
-      {/* ── Services Grid ── */}
+      {/* â”€â”€ Services Grid â”€â”€ */}
       <section className="services-section">
         <div className="services-section__inner">
           <div className="reveal" ref={addRef}>
             <SectionHeader
-              tag="✦ Our Services"
+              tag="âœ¦ Our Services"
               titleHtml="Capturing Every <em>Chapter of Your Life</em>"
               center
             />
@@ -235,12 +235,12 @@ function Services() {
         </div>
       </section>
 
-      {/* ── Process ── */}
+      {/* â”€â”€ Process â”€â”€ */}
       <section className="process-section">
         <div className="process-section__inner">
           <div className="reveal" ref={addRef}>
             <SectionHeader
-              tag="✦ How It Works"
+              tag="âœ¦ How It Works"
               titleHtml="Our Simple <em>4-Step Process</em>"
               center
               light
@@ -272,10 +272,10 @@ function Services() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* â”€â”€ CTA â”€â”€ */}
       <section className="services-cta">
         <div className="services-cta__inner reveal" ref={addRef}>
-          <span className="section-tag">✦ Ready to Begin?</span>
+          <span className="section-tag">âœ¦ Ready to Begin?</span>
           <h2 className="services-cta__title">
             Let's Create Something <em>Unforgettable Together</em>
           </h2>

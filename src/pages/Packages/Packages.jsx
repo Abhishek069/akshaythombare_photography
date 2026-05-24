@@ -6,7 +6,7 @@ import './Packages.css';
 const packages = [
   {
     name: 'Essential',
-    price: '15,000',
+    price: '7,500',
     tag: null,
     tagline: 'Perfect for small celebrations',
     color: 'essential',
@@ -26,7 +26,7 @@ const packages = [
   },
   {
     name: 'Premium',
-    price: '35,000',
+    price: '17,500',
     tag: 'Most Popular',
     tagline: 'Our best-selling complete package',
     color: 'premium',
@@ -46,7 +46,7 @@ const packages = [
   },
   {
     name: 'Signature',
-    price: '65,000',
+    price: '32,500',
     tag: 'All Inclusive',
     tagline: 'The ultimate luxury experience',
     color: 'signature',
@@ -70,37 +70,37 @@ const addons = [
   {
     icon: 'fas fa-drone',
     title: 'Drone Add-On',
-    price: '₹8,000',
+    price: 'â‚¹4,000',
     desc: 'Aerial footage of venue and celebrations.',
   },
   {
     icon: 'fas fa-book-open',
     title: 'Premium Album',
-    price: '₹12,000',
+    price: 'â‚¹6,000',
     desc: '30-page fine art album with leather cover.',
   },
   {
     icon: 'fas fa-heart',
     title: 'Pre-Event Shoot',
-    price: '₹10,000',
+    price: 'â‚¹5,000',
     desc: '3-hour shoot at location of your choice.',
   },
   {
     icon: 'fas fa-film',
     title: 'Same-Day Edit',
-    price: '₹8,000',
+    price: 'â‚¹4,000',
     desc: '3-min highlight reel ready same day.',
   },
   {
     icon: 'fas fa-globe',
     title: 'Destination Travel',
     price: 'Custom',
-    desc: 'Pan India & international — ask for quote.',
+    desc: 'Pan India & international â€” ask for quote.',
   },
   {
     icon: 'fas fa-user-plus',
     title: 'Extra Photographer',
-    price: '₹5,000/day',
+    price: 'â‚¹2,500/day',
     desc: 'Add a second or third shooter to any package.',
   },
 ];
@@ -108,11 +108,11 @@ const addons = [
 const faqs = [
   {
     q: 'How do I confirm my booking?',
-    a: 'A 30% advance payment confirms your date. We send a formal booking confirmation within 24 hours. Balance is split — 40% one month before the event and 30% on the day itself.',
+    a: 'A 30% advance payment confirms your date. We send a formal booking confirmation within 24 hours. Balance is split â€” 40% one month before the event and 30% on the day itself.',
   },
   {
     q: 'When will we receive our photos and films?',
-    a: 'Preview sneak-peek images are delivered within 48 hours. Fully edited gallery in 30–45 days. Cinematic films in 60–75 days. Albums within 90 days of photo selection.',
+    a: 'Preview sneak-peek images are delivered within 48 hours. Fully edited gallery in 30â€“45 days. Cinematic films in 60â€“75 days. Albums within 90 days of photo selection.',
   },
   {
     q: 'Can we customise a package?',
@@ -120,11 +120,11 @@ const faqs = [
   },
   {
     q: 'Do you cover multiple functions like Haldi, Mehndi, Sangeet?',
-    a: 'Yes! We cover all pre-wedding and wedding functions. Multi-function discounts are available — reach out for a bundled quote.',
+    a: 'Yes! We cover all pre-wedding and wedding functions. Multi-function discounts are available â€” reach out for a bundled quote.',
   },
   {
     q: 'Do you travel outside Mumbai?',
-    a: 'Yes — we cover Pan India and international destinations. Travel and accommodation costs are added to the package at actuals.',
+    a: 'Yes â€” we cover Pan India and international destinations. Travel and accommodation costs are added to the package at actuals.',
   },
   {
     q: 'What is your cancellation policy?',
@@ -178,31 +178,31 @@ function Packages() {
   return (
     <main className="page-wrapper">
 
-      {/* ── Page Hero ── */}
+      {/* â”€â”€ Page Hero â”€â”€ */}
       <section className="packages-hero">
         <div className="packages-hero__overlay" />
         <div className="packages-hero__lines">
           <span /><span /><span />
         </div>
         <div className="packages-hero__content">
-          <span className="section-tag">✦ Investment</span>
+          <span className="section-tag">âœ¦ Investment</span>
           <h1 className="packages-hero__title">
             Transparent Pricing,
             <em> No Hidden Costs</em>
           </h1>
           <p className="packages-hero__sub">
-            Mumbai · Pan India · International
+            Mumbai Â· Pan India Â· International
           </p>
         </div>
       </section>
 
-      {/* ── Packages Section ── */}
+      {/* â”€â”€ Packages Section â”€â”€ */}
       <section className="packages-section">
         <div className="packages-section__inner">
 
           <div className="reveal" ref={addRef}>
             <SectionHeader
-              tag="✦ Our Packages"
+              tag="âœ¦ Our Packages"
               titleHtml="Choose the Coverage That <em>Fits Your Story</em>"
               center
             />
@@ -230,7 +230,7 @@ function Packages() {
                   <span className="package__name">{pkg.name}</span>
                   <span className="package__tagline">{pkg.tagline}</span>
                   <div className="package__price">
-                    <span className="package__currency">₹</span>
+                    <span className="package__currency">â‚¹</span>
                     <span className="package__amount">{pkg.price}</span>
                   </div>
                   <span className="package__per">onwards</span>
@@ -265,18 +265,18 @@ function Packages() {
             <i className="fas fa-info-circle" />
             All packages are fully customisable. Prices vary based on
             event type, duration, and location.
-            <Link to="/book-now"> Get a custom quote →</Link>
+            <Link to="/book-now"> Get a custom quote â†’</Link>
           </p>
 
         </div>
       </section>
 
-      {/* ── Add-Ons ── */}
+      {/* â”€â”€ Add-Ons â”€â”€ */}
       <section className="addons-section">
         <div className="addons-section__inner">
           <div className="reveal" ref={addRef}>
             <SectionHeader
-              tag="✦ Enhance Your Package"
+              tag="âœ¦ Enhance Your Package"
               titleHtml="Popular <em>Add-Ons</em>"
               center
               light
@@ -307,12 +307,12 @@ function Packages() {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* â”€â”€ FAQ â”€â”€ */}
       <section className="faq-section">
         <div className="faq-section__inner">
           <div className="reveal" ref={addRef}>
             <SectionHeader
-              tag="✦ FAQs"
+              tag="âœ¦ FAQs"
               titleHtml="Questions We <em>Always Get Asked</em>"
               center
             />
@@ -333,10 +333,10 @@ function Packages() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* â”€â”€ CTA â”€â”€ */}
       <section className="packages-cta">
         <div className="packages-cta__inner reveal" ref={addRef}>
-          <span className="section-tag">✦ Let's Talk</span>
+          <span className="section-tag">âœ¦ Let's Talk</span>
           <h2 className="packages-cta__title">
             Can't Find the Right Fit?
             <em> Let's Build Yours.</em>
