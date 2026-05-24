@@ -21,7 +21,7 @@ HERO
   left: 0;
   right: 0;
   bottom: -20%;
-  background: url('../../../assets/hero-bg.jpg') center / cover no-repeat;
+  background: url('../../../assets/hero-bg.jpeg') center / cover no-repeat;
   /* background: url('/images/hero-bg.webp') center / cover no-repeat; */
   will-change: transform;
   z-index: 0;

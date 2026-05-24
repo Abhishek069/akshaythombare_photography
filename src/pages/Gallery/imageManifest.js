@@ -10,10 +10,10 @@
 
 
 const images = [
-  { id: 1,  file: 'wedding-01.jpg', category: 'ceremony',    alt: 'Wedding ceremony moment' },
-  { id: 2,  file: 'wedding-02.jpg', category: 'candid',      alt: 'Candid couple moment' },
-  { id: 3,  file: 'wedding-03.jpg', category: 'ceremony',    alt: 'Phera rituals' },
-  { id: 4,  file: 'wedding-04.jpg', category: 'reception',   alt: 'Reception celebration' },
+  { id: 1,  file: 'wedding-01.jpg', category: 'Indoor Baby Shoot',    alt: 'Indoor Baby Shoot ' },
+  { id: 2,  file: 'wedding-02.jpg', category: 'Indoor Baby Shoot',      alt: 'Indoor Baby Shoot ' },
+  { id: 3,  file: 'wedding-03.jpg', category: 'Indoor Baby Shoot',    alt: 'Indoor Baby Shoot ' },
+  { id: 4,  file: 'wedding-04.jpg', category: 'Indoor Baby Shoot',   alt: 'Indoor Baby Shoot ' },
   { id: 5,  file: 'wedding-05.jpeg', category: 'candid',      alt: 'Bride candid shot' },
   { id: 6,  file: 'wedding-06.jpeg', category: 'pre-wedding', alt: 'Pre-wedding shoot' },
   { id: 7,  file: 'wedding-07.jpeg', category: 'ceremony',    alt: 'Varmala ceremony' },
